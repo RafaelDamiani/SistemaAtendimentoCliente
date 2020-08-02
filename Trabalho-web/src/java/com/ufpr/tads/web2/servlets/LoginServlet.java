@@ -6,7 +6,6 @@ import com.ufpr.tads.web2.beans.Usuario;
 import com.ufpr.tads.web2.facade.ClienteFacade;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -44,7 +43,12 @@ public class LoginServlet extends HttpServlet {
             MessageDigest md;
             try {
                 md = MessageDigest.getInstance("MD5");
+                
+                //Luan - Estamos recebendo NullPointerException aqui
+                
                 byte[] hash = md.digest(senha.getBytes("UTF-8"));
+                
+                
                 for (int i = 0; i < hash.length; i++) {
                     if ((0xff & hash[i]) < 0x10) {
                         hexString.append("0"
@@ -54,6 +58,9 @@ public class LoginServlet extends HttpServlet {
                     }
                 }
             } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
+                
+                System.out.println("Exception here");
+                
                 request.setAttribute("javax.servlet.jsp.jspException", ex);
                 request.setAttribute("javax.servlet.error.status_code", 500);
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/erro.jsp");
