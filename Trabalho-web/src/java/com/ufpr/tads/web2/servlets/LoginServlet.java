@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.ufpr.tads.web2.servlets;
 
-import com.ufpr.tads.tcc.exceptions.UsuarioSenhaInvalidosException;
+import com.ufpr.tads.web2.exceptions.UsuarioSenhaInvalidosException;
 import com.ufpr.tads.web2.beans.Usuario;
 import com.ufpr.tads.web2.facade.ClienteFacade;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
@@ -23,10 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Gabriel
- */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
@@ -93,23 +85,7 @@ public class LoginServlet extends HttpServlet {
                             case "c" :
                                 nome                = ClienteFacade.buscarNomePorId(us.getIdReferencia());
                                 redirecionamento    = "/portal.jsp";
-                                break; /*
-                            case "g" : 
-                                nome                = OrganizadorFacade.buscarNomePorId(us.getIdReferencia());
-                                redirecionamento    = "/EventoServlet?action=list";
                                 break;
-                            case "f" :
-                                nome = CompradorFacade.buscarNomePorId(us.getIdReferencia());
-                                redirecionamento    = "/EventoServlet?action=list";
-                                break;*/
-                                /*       case "o" : 
-                                nome                = OrganizadorFacade.buscarNomePorId(us.getIdReferencia());
-                                redirecionamento    = "/EventoServlet?action=list";
-                                break;
-                            case "c" :
-                                nome = CompradorFacade.buscarNomePorId(us.getIdReferencia());
-                                redirecionamento    = "/EventoServlet?action=list";
-                                break;*/
 
                         }
                     } catch (SQLException | ClassNotFoundException ex) {

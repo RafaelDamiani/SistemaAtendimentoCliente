@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Gabriel
- */
 @WebServlet(name = "CadastraServlet", urlPatterns = {"/CadastraServlet"})
 public class ClienteServlet extends HttpServlet {
 

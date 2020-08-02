@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ufpr.tads.tcc.exceptions;
+package com.ufpr.tads.web2.exceptions;
 
-/**
- *
- * @author mateus
- */
+
 public class AppException extends Exception {
 
     public AppException() {

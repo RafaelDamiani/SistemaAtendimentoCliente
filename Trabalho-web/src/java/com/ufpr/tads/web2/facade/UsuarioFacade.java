@@ -9,10 +9,6 @@ import com.ufpr.tads.web2.beans.Usuario;
 import com.ufpr.tads.web2.dao.UsuarioDAO;
 import java.sql.SQLException;
 
-/**
- *
- * @author Gabriel
- */
 public class UsuarioFacade {
     
        

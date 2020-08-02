@@ -10,10 +10,6 @@ import com.ufpr.tads.web2.dao.EnderecoDAO;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- *
- * @author gabriel
- */
 public class EnderecoFacade {
     
     public static Endereco buscar(int id) throws SQLException, ClassNotFoundException {

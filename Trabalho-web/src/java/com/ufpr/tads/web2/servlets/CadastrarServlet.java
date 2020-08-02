@@ -5,7 +5,7 @@
  */
 package com.ufpr.tads.web2.servlets;
 
-import com.ufpr.tads.tcc.exceptions.EmailDuplicadoException;
+import com.ufpr.tads.web2.exceptions.EmailDuplicadoException;
 import com.ufpr.tads.web2.beans.Cidade;
 import com.ufpr.tads.web2.beans.Cliente;
 import com.ufpr.tads.web2.beans.Endereco;
@@ -33,10 +33,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Gabriel
- */
 @WebServlet(name = "CadastrarServlet", urlPatterns = {"/CadastrarServlet"})
 public class CadastrarServlet extends HttpServlet {
 
@@ -55,7 +51,6 @@ public class CadastrarServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String acao = request.getParameter("action");
 
-        //Comprador us = (Comprador) session.getAttribute("usuario");
         if (acao == null || acao.equals("list")) {
             List<Cliente> clientes;
             try {

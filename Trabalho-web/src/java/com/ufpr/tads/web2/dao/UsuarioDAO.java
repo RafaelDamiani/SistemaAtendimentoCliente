@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.ufpr.tads.web2.dao;
 
 import com.ufpr.tads.web2.beans.Cliente;
@@ -15,10 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author Gabriel
- */
 public class UsuarioDAO {
     
    private Connection conn;
@@ -70,5 +62,4 @@ public class UsuarioDAO {
         stmt.setInt(2, usuario.getId());
         stmt.executeUpdate();
     }
-
 }

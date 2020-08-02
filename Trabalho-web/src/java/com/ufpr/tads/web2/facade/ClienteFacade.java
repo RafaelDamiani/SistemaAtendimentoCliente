@@ -12,10 +12,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- *
- * @author Gabriel
- */
 public class ClienteFacade {
     
     
