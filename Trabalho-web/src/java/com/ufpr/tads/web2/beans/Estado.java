@@ -4,28 +4,17 @@ package com.ufpr.tads.web2.beans;
 import java.io.Serializable;
 
 
-public class Estado implements Serializable {
-    private int id;
-    private String nome;
-    private String sigla;
+public class Estado implements Serializable{
+       private int idEstado;
+       private String sigla;
+       private String nomeEstado;
 
-    public Estado() {
+    public int getIdEstado() {
+        return idEstado;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
     public String getSigla() {
@@ -34,5 +23,13 @@ public class Estado implements Serializable {
 
     public void setSigla(String sigla) {
         this.sigla = sigla;
+    }
+
+    public String getNomeEstado() {
+        return nomeEstado;
+    }
+
+    public void setNomeEstado(String nomeEstado) {
+        this.nomeEstado = nomeEstado;
     }
 }

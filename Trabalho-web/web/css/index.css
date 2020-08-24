@@ -1,0 +1,21 @@
+body{
+	background-color:#F6CEF5
+
+}
+
+.school-features{
+	background-color: black ;
+}
+
+.media-body image-responsive{
+	margim: 50px,30px;
+}
+
+.tabela-img h3{
+	position: absolute;
+	text-align: center;
+}
+
+.tabela-img h3:hover{
+	color: gray;
+}

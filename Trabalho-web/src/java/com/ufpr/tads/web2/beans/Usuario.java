@@ -4,31 +4,45 @@ package com.ufpr.tads.web2.beans;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-    private int id;
+    private int idUsuario;
+    private String nomeUsuario;
+    private String cpf;
     private String email;
-    private String senha;
-    private String tipo;
-    private boolean ativo;
-    private int idReferencia;
-    private Endereco endereco;
+    private String password;
+    private String telefone;
+    private String nomeRua;
+    private int numeroRua;
+    private String complemento;
+    private String bairro;
+    private String cep;
+    private Cidade cidade;
+    private String tipoUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String email, String senha, String tipo, Endereco endereco) {
-        this.id = id;
-        this.email = email;
-        this.senha = senha;
-        this.tipo = tipo;
-        this.endereco = endereco;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public int getId() {
-        return id;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {
@@ -39,44 +53,81 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public String getNomeRua() {
+        return nomeRua;
     }
 
-    public int getIdReferencia() {
-        return idReferencia;
+    public void setNomeRua(String nomeRua) {
+        this.nomeRua = nomeRua;
     }
 
-    public void setIdReferencia(int idReferencia) {
-        this.idReferencia = idReferencia;
-    }
-    
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public int getNumeroRua() {
+        return numeroRua;
     }
 
-    public boolean isAtivo() {
-        return ativo;
+    public void setNumeroRua(int numeroRua) {
+        this.numeroRua = numeroRua;
     }
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nomeUsuario=" + nomeUsuario + ", cpf=" + cpf + ", email=" + email + ", password=" + password + ", telefone=" + telefone + ", nomeRua=" + nomeRua + ", numeroRua=" + numeroRua + ", complemento=" + complemento + ", bairro=" + bairro + ", cep=" + cep + ", cidade=" + cidade + ", tipoUsuario=" + tipoUsuario + '}';
     }
     
     

@@ -6,91 +6,104 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import com.ufpr.tads.web2.facade.EstadoFacade;
 
 
 public class CidadeDAO {
-    private final Connection conn;
+    Connection conn = null;
+    public List<Cidade> all() throws SQLException {
 
-    public CidadeDAO() throws SQLException, ClassNotFoundException {
-        this.conn = (Connection) new ConnectionFactory().getConnection();
-    }
+        List<Cidade> listaCidades = new ArrayList<Cidade>();
+        try {
 
-    public List<Cidade> getCidades() throws SQLException, ClassNotFoundException {
-        ResultSet rs;
-        List<Cidade> cidades = new ArrayList<>();
-        Statement stmt = conn.createStatement();
-        String query = "select c.id_cidade, c.nome_cidade, e.id_estado, e.nome_estado, e.sigla_estado from tb_cidade c, tb_estado e where c.id_estado = e.id_estado";
-        rs = stmt.executeQuery(query);
-        while (rs.next()) {
-            int id = rs.getInt("id_cidade");
-            String nomecid = rs.getString("nome_cidade");
-            int idestado = rs.getInt("id_estado");
-            String nomeest = rs.getString("nome_estado");
-            String sigla = rs.getString("sigla_estado");
-            Cidade cidade = new Cidade();
-            cidade.setId(id);
-            cidade.setNome(nomecid);
-            Estado estado = new Estado();
-            estado.setId(idestado);
-            estado.setNome(nomeest);
-            estado.setSigla(sigla);
-            cidade.setEstado(estado);
-            cidades.add(cidade);
+            conn = ConnectionFactory.getConnection();
+            ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_cidade");
+
+            while (rs.next()) {
+                Cidade cidade = new Cidade();
+                cidade.setIdCidade(rs.getInt("id_cidade")); 
+                cidade.setNomeCidade(rs.getString("nome_cidade"));
+                int idEstado = rs.getInt("id_estado"); 
+                Estado estado = EstadoFacade.buscarEstadoCliente(idEstado);
+                cidade.setEstado(estado);
+                listaCidades.add(cidade);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+
         }
-        return cidades;
+        return listaCidades;
     }
     
-    public List<Cidade> getCidadesByIdEstado(int idestado) throws SQLException {
-        String sql = "SELECT c.id_cidade, c.nome_cidade, e.id_estado, e.nome_estado, e.sigla_estado FROM tb_cidade c, tb_estado e WHERE c.id_estado = e.id_estado AND c.id_estado=(?);";
+     public Cidade buscarPorId(int idCidade) throws SQLException{
+         conn = null;
+         Cidade cidade = new Cidade();
+        try {
+            conn = ConnectionFactory.getConnection();
+            PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
+                    "SELECT * FROM tb_cidade WHERE id_cidade = ?");
+            statement.setInt(1, idCidade);
+            statement.execute();
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                cidade.setIdCidade(rs.getInt("id_cidade")); 
+                cidade.setNomeCidade(rs.getString("nome_cidade"));
+                int idEstado = rs.getInt("id_estado"); 
+                Estado estado = EstadoFacade.buscarEstadoCliente(idEstado);
+                cidade.setEstado(estado); 
+            } else {
+               cidade = null;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
 
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, idestado);
-
-        ResultSet res = stmt.executeQuery();
-        List<Cidade> cidades = new ArrayList<>();
-
-        while (res.next()) {
-            int id = res.getInt("id_cidade");
-            String nomecid = res.getString("nome_cidade");
-            idestado = res.getInt("id_estado");
-            String nomeest = res.getString("nome_estado");
-            String sigla = res.getString("sigla_estado");
-            Cidade cidade = new Cidade();
-            cidade.setId(id);
-            cidade.setNome(nomecid);
-            cidades.add(cidade);
-        }
-        return cidades;
-    }
-    
-    
-    public Cidade getCidadeById(int idcidade) throws SQLException {
-        String sql = "SELECT c.id_cidade, c.nome_cidade, e.id_estado, e.nome_estado, e.sigla_estado FROM tb_cidade c, tb_estado e WHERE c.id_estado = e.id_estado AND c.id_cidade=(?);";
-
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, idcidade);
-
-        ResultSet res = stmt.executeQuery();
-
-        while (res.next()) {
-            int id = res.getInt("id_cidade");
-            String nomecid = res.getString("nome_cidade");
-            int idestado = res.getInt("id_estado");
-            String nomeest = res.getString("nome_estado");
-            String sigla = res.getString("sigla_estado");
-            Cidade cidade = new Cidade();
-            cidade.setId(id);
-            cidade.setNome(nomecid);
-            Estado estado = new Estado();
-            estado.setId(idestado);
-            estado.setNome(nomeest);
-            estado.setSigla(sigla);
-            cidade.setEstado(estado);
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
             return cidade;
         }
-        return null;
+    }
+     
+    public List<Cidade> buscarCidadesPorEstado(int idEstado) throws SQLException {
+         conn = null;
+         List<Cidade> listaCidades = new ArrayList<Cidade>();
+        try {
+            conn = ConnectionFactory.getConnection();
+            PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
+                    "SELECT * FROM tb_cidade WHERE id_estado = ?");
+            statement.setInt(1, idEstado);
+            statement.execute();
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Cidade cidade = new Cidade();
+                cidade.setIdCidade(rs.getInt("id_cidade"));
+                idEstado = rs.getInt("id_estado");
+                Estado estado = EstadoFacade.buscarEstadoCliente(idEstado);
+                cidade.setEstado(estado);
+                cidade.setNomeCidade(rs.getString("nome_cidade"));
+                listaCidades.add(cidade);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+            return listaCidades;
+        
+        }
+    }
+
+    public List<Cidade> getCidades() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

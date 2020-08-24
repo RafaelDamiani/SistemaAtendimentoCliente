@@ -1,15 +1,14 @@
 
 package com.ufpr.tads.web2.servlets;
 
-import com.ufpr.tads.web2.exceptions.UsuarioSenhaInvalidosException;
 import com.ufpr.tads.web2.beans.Usuario;
-import com.ufpr.tads.web2.facade.ClienteFacade;
-import com.ufpr.tads.web2.facade.UsuarioFacade;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.ufpr.tads.web2.beans.LoginBean;
+import com.ufpr.tads.web2.facade.LoginFacade;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
@@ -29,105 +30,33 @@ public class LoginServlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
+     * @throws java.io.UnsupportedEncodingException
+     * @throws java.security.NoSuchAlgorithmException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException, UnsupportedEncodingException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
-
-
-        String acao = request.getParameter("action");
-        if (acao == null || acao.equals("login")) {
-            String email = request.getParameter("email");
+        try (PrintWriter out = response.getWriter()) {
+            String usuario = request.getParameter("email");
             String senha = request.getParameter("senha");
-            StringBuffer hexString = new StringBuffer();
-            MessageDigest md;
-            try {
-                md = MessageDigest.getInstance("MD5");
-                
-                //Luan - Estamos recebendo NullPointerException aqui
-                
-                byte[] hash = md.digest(senha.getBytes("UTF-8"));
-                
-                
-                for (int i = 0; i < hash.length; i++) {
-                    if ((0xff & hash[i]) < 0x10) {
-                        hexString.append("0"
-                                + Integer.toHexString((0xFF & hash[i])));
-                    } else {
-                        hexString.append(Integer.toHexString(0xFF & hash[i]));
-                    }
-                }
-            } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
-                
-                System.out.println("Exception here");
-                
-                request.setAttribute("javax.servlet.jsp.jspException", ex);
-                request.setAttribute("javax.servlet.error.status_code", 500);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/erro.jsp");
+            Usuario user = LoginFacade.buscarUsuario(usuario, senha);
+
+            HttpSession session = request.getSession();
+            if (user == null) {
+                request.setAttribute("msg", "Usuário ou senha incorretos. ");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+                rd.forward(request, response);
+            } else {
+                LoginBean loginBean = new LoginBean();
+                loginBean.setId(user.getIdUsuario());
+                loginBean.setNomeUsuario(user.getNomeUsuario());
+                loginBean.setTipoUsuario(user.getTipoUsuario());
+                session.setAttribute("loginBean", loginBean);
+
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/portal.jsp");
                 rd.forward(request, response);
             }
-
-            Usuario usuario = new Usuario();
-
-            try {
-                usuario = UsuarioFacade.buscarUsuarioByEmail(email);
-            } catch (SQLException | ClassNotFoundException ex) {
-                request.setAttribute("javax.servlet.jsp.jspException", ex);
-                request.setAttribute("javax.servlet.error.status_code", 500);
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/erro.jsp");
-                rd.forward(request, response);
-            }
-            try {
-                if (usuario != null && usuario.getEmail().equals(email) && usuario.getSenha().equals(hexString.toString())) {
-                    Usuario us = new Usuario();
-                    us.setId(usuario.getId());
-                    us.setEmail(usuario.getEmail());
-                    us.setTipo(usuario.getTipo());
-                    us.setIdReferencia(usuario.getIdReferencia());
-                    String nome             = "";
-                    String redirecionamento   = "";
-                    try {
-                        switch (us.getTipo()) {
-
-                            case "c" :
-                                nome                = ClienteFacade.buscarNomePorId(us.getIdReferencia());
-                                redirecionamento    = "/portal.jsp";
-                                break;
-
-                        }
-                    } catch (SQLException | ClassNotFoundException ex) {
-                        request.setAttribute("javax.servlet.jsp.jspException", ex);
-                        request.setAttribute("javax.servlet.error.status_code", 500);
-                        RequestDispatcher rd = getServletContext().getRequestDispatcher("/erro.jsp");
-                        rd.forward(request, response);
-                    }
-                    HttpSession session = request.getSession();
-                    session.setAttribute("usuario", us);
-                    session.setAttribute("nome", nome);
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher(redirecionamento);
-                    rd.forward(request, response);
-
-                } else {
-                    throw new UsuarioSenhaInvalidosException("Usuário/Senha inválidos.");
-                }
-            } catch (UsuarioSenhaInvalidosException ex) {
-                request.setAttribute("msg", ex.getMessage());
-
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-                rd.forward(request, response);
-            }
-        
-        } else if (acao.equals("logout")) {
-            HttpSession session = request.getSession(false);
-
-            if (session != null) {
-                session.invalidate();
-            }
-
-            request.setAttribute("msg", "Usuário desconectado com sucesso");
-
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-            rd.forward(request, response);
         }
     }
 
@@ -142,8 +71,14 @@ public class LoginServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException, UnsupportedEncodingException {
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -156,8 +91,14 @@ public class LoginServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException, UnsupportedEncodingException {
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

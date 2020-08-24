@@ -12,18 +12,15 @@ import java.util.List;
 
 
 public class CidadeFacade {
-    public static List<Cidade> buscarTodasCidades() throws SQLException, ClassNotFoundException {
-        CidadeDAO cidadedao = new CidadeDAO();
-        return cidadedao.getCidades();
-    }
+    private static final CidadeDAO cidadeDAO = new CidadeDAO();
+     
+    public static List<Cidade> buscarCidadesPorEstado(int idEstado) throws SQLException {
+       List<Cidade> listaCidades = cidadeDAO.buscarCidadesPorEstado(idEstado);
+       return listaCidades;
+    } 
     
-    public static Cidade buscarCidade(int id) throws SQLException, ClassNotFoundException {
-        CidadeDAO cidadedao = new CidadeDAO();
-        return cidadedao.getCidadeById(id);
-    }
-    
-    public static List<Cidade> buscarCidadeByIdEstado(int id) throws SQLException, ClassNotFoundException {
-        CidadeDAO cidadedao = new CidadeDAO();
-        return cidadedao.getCidadesByIdEstado(id);
+    public static Cidade buscarCidadeCliente(int idCidade) throws SQLException {
+      Cidade cidade = cidadeDAO.buscarPorId(idCidade);
+      return cidade;
     }
 }

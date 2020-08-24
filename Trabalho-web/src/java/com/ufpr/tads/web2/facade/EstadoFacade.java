@@ -11,13 +11,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class EstadoFacade {
-    public static List<Estado> buscarTodosEstados() throws SQLException, ClassNotFoundException {
-        EstadoDAO estadodao = new EstadoDAO();
-        return estadodao.getEstados();
-    }
+    private static final EstadoDAO estadoDAO = new EstadoDAO();
+     
+     public static List<Estado> buscarTodos() throws SQLException{
+         List<Estado> listaEstados = estadoDAO.all();
+         return listaEstados;
+     }
     
-    public static Estado buscarEstado(int id) throws SQLException, ClassNotFoundException {
-        EstadoDAO cidadedao = new EstadoDAO();
-        return cidadedao.getEstadoById(id);
+    public static Estado buscarEstadoCliente(int idEstado) throws SQLException {
+      Estado estado = estadoDAO.buscarPorId(idEstado);
+      return estado;
     }
 }
