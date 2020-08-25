@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class ConnectionFactory {
@@ -19,11 +20,13 @@ public class ConnectionFactory {
         }
     }
 
-    static ResultSet getResultSet(Connection conn, String select__from_tb_atendimento) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    static ResultSet getResultSet(Connection conn, String sql) throws SQLException {
+        Statement statament = conn.createStatement();
+        return statament.executeQuery(sql);
     }
 
-    static PreparedStatement getPreparedStatement(Connection conn, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    static PreparedStatement getPreparedStatement(Connection conn, String sql) throws SQLException {
+        PreparedStatement statement = conn.prepareStatement(sql);
+        return statement;
     }
 }

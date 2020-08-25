@@ -24,7 +24,7 @@
             </div>
         </c:if>
         
-        <c:if test="${loginBean.tipoUsuario = 'Gerente'}">
+        <c:if test="${loginBean.getTipoUsuario() = 'Gerente'}">
             <div class="d-flex justify-content-center m-5">
                    
             </div>
