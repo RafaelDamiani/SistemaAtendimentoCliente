@@ -73,7 +73,8 @@ public class CidadeDAO {
     }
      
     public List<Cidade> buscarCidadesPorEstado(int idEstado) throws SQLException {
-         conn = null;
+         System.out.println(idEstado);
+       conn = null; 
          List<Cidade> listaCidades = new ArrayList<Cidade>();
         try {
             conn = ConnectionFactory.getConnection();
@@ -103,7 +104,5 @@ public class CidadeDAO {
         }
     }
 
-    public List<Cidade> getCidades() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

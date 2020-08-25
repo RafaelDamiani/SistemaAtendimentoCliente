@@ -11,7 +11,7 @@
 
         <div class='container col-md-6 mb-5'>
             <div class='align-self-center m-5'>
-                <h2 class='text-center col-12-md' style='color:#000'>Bem vindo ao Sistema de Atendimento SAC-BEIBE</h2>
+                <h2 class='text-center col-12-md' style='color:#000'>Bem vindo ao Sistema de Atendimento Cabeleleila Leila</h2>
             </div>
         </div>
 

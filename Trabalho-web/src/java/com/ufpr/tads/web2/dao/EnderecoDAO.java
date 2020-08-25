@@ -26,7 +26,7 @@ public class EnderecoDAO {
         st.setString(1, endereço.getRua());
         st.setInt(2, endereço.getNumero());
         st.setString(3, endereço.getCep());
-        st.setInt(4, endereço.getCidade().getId());
+        st.setInt(4, endereço.getCidade().getIdCidade());
         st.setString(5, endereço.getReferencia());
         st.setInt(6, endereço.getIdReferencia());
         
@@ -43,7 +43,7 @@ public class EnderecoDAO {
         st.setString(1, endereço.getRua());
         st.setInt(2, endereço.getNumero());
         st.setString(3, endereço.getCep());
-        st.setInt(4, endereço.getCidade().getId());
+        st.setInt(4, endereço.getCidade().getIdCidade());
         st.setString(5, endereço.getReferencia());
         st.setInt(6, endereço.getIdReferencia());
         st.setInt(7, endereço.getId());
@@ -61,7 +61,7 @@ public class EnderecoDAO {
         st.setString(1, endereço.getRua());
         st.setInt(2, endereço.getNumero());
         st.setString(3, endereço.getCep());
-        st.setInt(4, endereço.getCidade().getId());
+        st.setInt(4, endereço.getCidade().getIdCidade());
         st.setInt(5, endereço.getIdReferencia());
         st.setString(6, endereço.getReferencia());
         
@@ -95,7 +95,7 @@ public class EnderecoDAO {
             endereço.setNumero(rs.getInt("numero_endereco"));
             endereço.setCep(rs.getString("cep_endereco"));
             Cidade cidade = new Cidade();
-            cidade.setId(rs.getInt("id_cidade"));
+            cidade.setIdCidade(rs.getInt("id_cidade"));
             endereço.setCidade(cidade);
             endereço.setReferencia(rs.getString("referencia_endereco"));
             endereço.setIdReferencia(rs.getInt("id_referencia"));
@@ -120,7 +120,7 @@ public class EnderecoDAO {
             endereço.setNumero(rs.getInt("numero_endereco"));
             endereço.setCep(rs.getString("cep_endereco"));
             Cidade cidade = new Cidade();
-            cidade.setId(rs.getInt("id_cidade"));
+            cidade.setIdCidade(rs.getInt("id_cidade"));
             endereço.setCidade(cidade);
             endereço.setReferencia(rs.getString("referencia_endereco"));
             endereço.setIdReferencia(rs.getInt("id_referencia"));

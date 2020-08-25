@@ -50,8 +50,8 @@ public class EstadoDAO {
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
                 estado.setIdEstado(rs.getInt("id_estado")); 
-                estado.setNomeEstado(rs.getString("nome_estado"));
                 estado.setSigla(rs.getString("sigla"));
+                estado.setNomeEstado(rs.getString("nome_estado"));
             } else {
                estado = null;
             }

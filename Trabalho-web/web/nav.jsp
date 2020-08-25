@@ -4,7 +4,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <nav class="navbar navbar-light" style="background-color: #806afc">
-    <a class="navbar-brand" style="color:#FFFFFF" href="index.jsp">Beibe é Beibebeibe</a>
+    <a class="navbar-brand" style="color:#FFFFFF" href="index.jsp">Cabeleleila Leila</a>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
             <c:choose>
@@ -71,8 +71,8 @@
             <i class="far fa-user-circle fa-2x mt-3"></i>
         </c:if>
         <c:if test="${empty loginBean}">
-            <a class="nav-item nav-link active text-white" href="http://localhost:8080/Trabalho-web/login.jsp">Login <span class="sr-only"></span></a>
-            <a class="nav-item nav-link active text-white" href="http://localhost:8080/Trabalho-web//ClienteServlet?action=formNew">Cadastre-se agora!<span class="sr-only"></span></a>
+            <a class="nav-item nav-link active text-white" href="http://localhost:8080/Trabalho-web/login.jsp">Sign in <span class="sr-only"></span></a>
+            <a class="nav-item nav-link active text-white" href="http://localhost:8080/Trabalho-web//ClienteServlet?action=formNew">Cadastrar<span class="sr-only"></span></a>
         </c:if>
     </div>
 </nav>

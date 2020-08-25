@@ -57,7 +57,7 @@ public class UsuarioDAO {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
-                    "SELECT * FROM tb_usuario WHERE email_usuario=? AND senha_usuario=?");
+                    "SELECT * FROM tb_usuario WHERE email=? AND senha=?");
             statement.setString(1, login);
             statement.setString(2, passwd);
             statement.execute();
