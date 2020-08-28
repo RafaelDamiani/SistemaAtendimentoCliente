@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/facade/CidadeFacade.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/servlets/ClienteServlet.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/facade/LoginFacade.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/dao/CidadeDAO.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/beans/Cidade.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/dao/ConnectionFactory.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

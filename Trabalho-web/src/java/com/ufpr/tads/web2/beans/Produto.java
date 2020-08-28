@@ -7,7 +7,7 @@ package com.ufpr.tads.web2.beans;
 
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 public class Produto {
     private int idProduto;

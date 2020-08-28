@@ -12,7 +12,7 @@ import com.ufpr.tads.web2.dao.ProdutoDAO;
 
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 public class ProdutoFacade {
 

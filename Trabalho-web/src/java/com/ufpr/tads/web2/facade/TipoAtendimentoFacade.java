@@ -11,7 +11,7 @@ import com.ufpr.tads.web2.beans.TipoAtendimento;
 import com.ufpr.tads.web2.dao.TipoAtendimentoDAO;
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 public class TipoAtendimentoFacade {
 

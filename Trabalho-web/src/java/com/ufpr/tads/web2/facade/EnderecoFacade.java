@@ -8,7 +8,7 @@ package com.ufpr.tads.web2.facade;
 import com.ufpr.tads.web2.beans.Endereco;
 import com.ufpr.tads.web2.dao.EnderecoDAO;
 import java.sql.SQLException;
-import java.util.List;
+
 
 public class EnderecoFacade {
     

@@ -31,7 +31,7 @@ import com.ufpr.tads.web2.facade.LoginFacade;
 
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 @WebServlet(name = "AtendimentoServlet", urlPatterns = {"/AtendimentoServlet"})
 public class AtendimentoServlet extends HttpServlet {

@@ -44,6 +44,7 @@ public class LoginServlet extends HttpServlet {
 
             HttpSession session = request.getSession();
             if (user == null) {
+                System.out.println(session);
                 request.setAttribute("msg", "Usuário ou senha incorretos. ");
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
                 rd.forward(request, response);

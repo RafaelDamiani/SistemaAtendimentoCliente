@@ -28,10 +28,7 @@ import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.EstadoFacade;
 import com.ufpr.tads.web2.facade.CidadeFacade;
 
-/**
- *
- * @author Wenderson
- */
+
 @WebServlet(name = "FuncionarioServlet", urlPatterns = {"/FuncionarioServlet"})
 public class FuncionarioServlet extends HttpServlet {
 

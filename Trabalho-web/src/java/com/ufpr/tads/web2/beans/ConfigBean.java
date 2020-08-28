@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Patchelli
+ * @author Alan
  */
 public class ConfigBean implements Serializable {
     

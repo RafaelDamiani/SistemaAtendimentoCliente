@@ -12,7 +12,7 @@ import com.ufpr.tads.web2.dao.UsuarioDAO;
 import com.ufpr.tads.web2.beans.Usuario;
 /**
  *
- * @author Patchelli
+ * @author Wenderson 
  */
 
 public class LoginFacade {

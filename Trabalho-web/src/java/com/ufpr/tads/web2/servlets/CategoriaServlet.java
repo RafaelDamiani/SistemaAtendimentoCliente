@@ -24,7 +24,7 @@ import com.ufpr.tads.web2.facade.CategoriaFacade;
 
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 @WebServlet(urlPatterns = {"/CategoriaServlet"})
 public class CategoriaServlet extends HttpServlet {
