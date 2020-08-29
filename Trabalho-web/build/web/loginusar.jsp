@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index.jsp
-    Created on : 23/02/2019, 18:01:34
-    Author     : Gabriel
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

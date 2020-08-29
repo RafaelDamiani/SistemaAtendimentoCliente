@@ -1004,7 +1004,6 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.javax.servlet-5.1.12.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.javax.servlet-5.1.12.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.gson-2.6.2.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copyfiles files="${libs.JasperRelatorio.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.jasperreports-6.2.2.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
