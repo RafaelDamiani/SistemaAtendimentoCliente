@@ -1,8 +1,3 @@
-<%-- 
-    Document   : cadastro
-    Created on : 15/05/2019, 20:48:07
-    Author     : Gabriel
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="com.ufpr.tads.web2.beans.Usuario"%>

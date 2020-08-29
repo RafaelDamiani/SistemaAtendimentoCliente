@@ -1,9 +1,3 @@
-<%-- 
-    Document   : AutoCadastro
-    Created on : 05/05/2019, 20:08:15
-    Author     : Usuario
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

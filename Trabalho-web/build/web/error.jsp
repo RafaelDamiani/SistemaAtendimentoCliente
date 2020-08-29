@@ -1,9 +1,3 @@
-<%-- 
-    Document   : error.jsp
-    Created on : 23/02/2019, 18:01:47
-    Author     : Gabriel
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
