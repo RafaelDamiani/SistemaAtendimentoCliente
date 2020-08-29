@@ -50,14 +50,7 @@ public class GeradorRelatorioFacade {
                 sout.write(bytes);
                 sout.flush();
             }
-        }catch (ClassNotFoundException e) {
-            request.setAttribute("mensagem", "Driver BD não encontrado : "  + e.getMessage());
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-        } catch (SQLException e) {
-            request.setAttribute("mensagem", "Erro de conexão ou query: "
-                    + e.getMessage());
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-        } catch (JRException e) {
+        }catch (JRException e) {
             request.setAttribute("mensagem", "Erro no Jasper : " + e.getMessage());
             request.getRequestDispatcher("/erro.jsp").forward(request, response);
         } finally {
@@ -96,14 +89,7 @@ public class GeradorRelatorioFacade {
                 sout.write(bytes);
                 sout.flush();
             }
-        }catch (ClassNotFoundException e) {
-            request.setAttribute("mensagem", "Driver BD não encontrado : "  + e.getMessage());
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-        } catch (SQLException e) {
-            request.setAttribute("mensagem", "Erro de conexão ou query: "
-                    + e.getMessage());
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-        } catch (JRException e) {
+        }catch (JRException e) {
             request.setAttribute("mensagem", "Erro no Jasper : " + e.getMessage());
             request.getRequestDispatcher("/erro.jsp").forward(request, response);
         } finally {
@@ -141,14 +127,7 @@ public class GeradorRelatorioFacade {
                 sout.write(bytes);
                 sout.flush();
             }
-        }catch (ClassNotFoundException e) {
-            request.setAttribute("mensagem", "Driver BD não encontrado : "  + e.getMessage());
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-        } catch (SQLException e) {
-            request.setAttribute("mensagem", "Erro de conexão ou query: "
-                    + e.getMessage());
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-        } catch (JRException e) {
+        }catch (JRException e) {
             request.setAttribute("mensagem", "Erro no Jasper : " + e.getMessage());
             request.getRequestDispatcher("/erro.jsp").forward(request, response);
         } finally {
