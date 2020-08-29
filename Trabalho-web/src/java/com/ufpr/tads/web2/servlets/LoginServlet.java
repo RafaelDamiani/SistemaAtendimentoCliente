@@ -18,7 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.ufpr.tads.web2.beans.LoginBean;
 import com.ufpr.tads.web2.facade.LoginFacade;
-
+/**
+ *
+ * @author Luan 
+ */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 

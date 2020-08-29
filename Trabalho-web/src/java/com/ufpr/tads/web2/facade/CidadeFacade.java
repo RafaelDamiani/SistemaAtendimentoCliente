@@ -9,7 +9,10 @@ import com.ufpr.tads.web2.beans.Cidade;
 import com.ufpr.tads.web2.dao.CidadeDAO;
 import java.sql.SQLException;
 import java.util.List;
-
+/**
+ *
+ * @author Alan 
+ */
 
 public class CidadeFacade {
     private static final CidadeDAO cidadeDAO = new CidadeDAO();

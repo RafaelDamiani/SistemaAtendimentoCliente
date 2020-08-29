@@ -15,7 +15,7 @@ import com.ufpr.tads.web2.beans.TipoAtendimento;
 
 /**
  *
- * @author Patchelli
+ * @author Carolina
  */
 public class TipoAtendimentoDAO {
 

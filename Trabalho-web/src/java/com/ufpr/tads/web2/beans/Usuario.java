@@ -2,7 +2,10 @@
 package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
-
+/**
+ *
+ * @author Rafael 
+ */
 public class Usuario implements Serializable {
     private int idUsuario;
     private String nomeUsuario;

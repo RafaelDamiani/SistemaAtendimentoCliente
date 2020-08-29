@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package com.ufpr.tads.web2.exceptions;
-
+/**
+ *
+ * @author Rafael 
+ */
 
 public class AppException extends Exception {
 

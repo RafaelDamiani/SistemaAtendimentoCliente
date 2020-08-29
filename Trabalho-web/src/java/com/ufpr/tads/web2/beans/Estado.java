@@ -3,7 +3,10 @@ package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
 
-
+/**
+ *
+ * @author Carolina 
+ */
 public class Estado implements Serializable{
        private int idEstado;
        private String sigla;

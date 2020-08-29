@@ -23,7 +23,10 @@ import com.ufpr.tads.web2.beans.Categoria;
 import com.ufpr.tads.web2.beans.Produto;
 import com.ufpr.tads.web2.facade.ProdutoFacade;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
-
+/**
+ *
+ * @author Wenderson 
+ */
 @WebServlet(name = "ProdutoServlet", urlPatterns = {"/ProdutoServlet"})
 public class ProdutoServlet extends HttpServlet {
 

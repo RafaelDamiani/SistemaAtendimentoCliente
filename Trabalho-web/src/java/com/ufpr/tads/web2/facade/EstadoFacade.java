@@ -9,7 +9,10 @@ import com.ufpr.tads.web2.beans.Estado;
 import com.ufpr.tads.web2.dao.EstadoDAO;
 import java.sql.SQLException;
 import java.util.List;
-
+/**
+ *
+ * @author Carolina 
+ */
 public class EstadoFacade {
     private static final EstadoDAO estadoDAO = new EstadoDAO();
      

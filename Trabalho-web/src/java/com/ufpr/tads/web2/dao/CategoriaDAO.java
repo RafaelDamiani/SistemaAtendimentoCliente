@@ -15,7 +15,7 @@ import com.ufpr.tads.web2.beans.Categoria;
 
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 public class CategoriaDAO {
 

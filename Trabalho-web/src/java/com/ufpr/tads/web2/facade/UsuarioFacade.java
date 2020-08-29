@@ -12,7 +12,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
-
+/**
+ *
+ * @author Carolina 
+ */
 
 public class UsuarioFacade {
     private static final UsuarioDAO usuarioDAO = new UsuarioDAO();

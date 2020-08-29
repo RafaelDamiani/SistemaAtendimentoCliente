@@ -16,7 +16,7 @@ import com.ufpr.tads.web2.beans.Categoria;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
 /**
  *
- * @author Patchelli
+ * @author Alan
  */
 public class ProdutoDAO {
 

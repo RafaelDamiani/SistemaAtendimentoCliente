@@ -8,7 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *
+ * @author Luan 
+ */
 public class EstadoDAO {
     Connection conn = null;
     public List<Estado> all() throws SQLException {

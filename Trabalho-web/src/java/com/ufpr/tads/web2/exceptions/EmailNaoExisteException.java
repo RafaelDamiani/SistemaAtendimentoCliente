@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package com.ufpr.tads.web2.exceptions;
-
+/**
+ *
+ * @author Luan 
+ */
 public class EmailNaoExisteException extends AppException {
 
     public EmailNaoExisteException() {

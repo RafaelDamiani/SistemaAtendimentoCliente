@@ -27,7 +27,10 @@ import com.ufpr.tads.web2.beans.Usuario;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.EstadoFacade;
 import com.ufpr.tads.web2.facade.CidadeFacade;
-
+/**
+ *
+ * @author Rafael 
+ */
 @WebServlet(name = "ClienteServlet", urlPatterns = {"/ClienteServlet"})
 public class ClienteServlet extends HttpServlet {
 

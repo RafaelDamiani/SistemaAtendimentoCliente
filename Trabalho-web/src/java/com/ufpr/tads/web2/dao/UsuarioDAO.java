@@ -11,7 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.ufpr.tads.web2.beans.Cidade;
 import com.ufpr.tads.web2.facade.CidadeFacade;
-
+/**
+ *
+ * @author Rafael 
+ */
 public class UsuarioDAO {
 
     List<Usuario> listaUsuarios = new ArrayList<Usuario>();

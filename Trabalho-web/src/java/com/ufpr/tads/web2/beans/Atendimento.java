@@ -10,7 +10,7 @@ import java.time.ZoneId;
 import java.util.Date;
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 public class Atendimento {
 

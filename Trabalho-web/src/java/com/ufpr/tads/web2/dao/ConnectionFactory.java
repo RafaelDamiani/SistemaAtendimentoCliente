@@ -7,7 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+/**
+ *
+ * @author Rafael 
+ */
 public class ConnectionFactory {
     public static Connection getConnection() {
         

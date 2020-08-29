@@ -8,7 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ *
+ * @author Rafael 
+ */
 public class EnderecoDAO {
     private Connection conn;
 

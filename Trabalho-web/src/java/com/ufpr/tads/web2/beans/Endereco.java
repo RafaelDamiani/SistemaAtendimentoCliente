@@ -7,7 +7,7 @@ package com.ufpr.tads.web2.beans;
 
 /**
  *
- * @author Wenderson 
+ * @author Rafael 
  */
 public class Endereco {
     private int id;

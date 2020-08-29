@@ -13,7 +13,7 @@ import com.ufpr.tads.web2.beans.Atendimento;
 import com.ufpr.tads.web2.dao.AtendimentoDAO;
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 public class AtendimentoFacade {
 

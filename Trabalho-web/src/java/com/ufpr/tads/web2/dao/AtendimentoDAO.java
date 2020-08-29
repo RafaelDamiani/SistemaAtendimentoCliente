@@ -25,7 +25,7 @@ import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.TipoAtendimentoFacade;
 /**
  *
- * @author Patchelli
+ * @author Carolina
  */
 public class AtendimentoDAO {
 

@@ -12,7 +12,7 @@ import com.ufpr.tads.web2.dao.CategoriaDAO;
         ;
 /**
  *
- * @author Patchelli
+ * @author Wenderson
  */
 public class CategoriaFacade {
 
