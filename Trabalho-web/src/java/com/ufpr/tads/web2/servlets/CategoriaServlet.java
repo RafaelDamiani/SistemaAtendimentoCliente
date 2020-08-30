@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.servlets;
 
 import java.io.IOException;
@@ -22,22 +17,8 @@ import javax.servlet.http.HttpSession;
 import com.ufpr.tads.web2.beans.CategoriaBean;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
 
-/**
- *
- * @author Wenderson
- */
 @WebServlet(urlPatterns = {"/CategoriaServlet"})
 public class CategoriaServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
@@ -92,7 +73,6 @@ public class CategoriaServlet extends HttpServlet {
                     categoria.setNomeCategoria(request.getParameter("nomeCategoria"));
 
                     if (!categoria.getNomeCategoria().equals(null)) {
-
                         if (CategoriaFacade.alterar(categoria) == 0) {
                             strMessage = "Categoria com id " + categoria.getIdCategoria() + " atualizada com sucesso!";
                             request.setAttribute("msg", strMessage);
@@ -133,7 +113,6 @@ public class CategoriaServlet extends HttpServlet {
                         request.setAttribute("msg", "Cadastro Inválido. ");
                         rd = getServletContext().getRequestDispatcher("/erro.jsp");
                         rd.forward(request, response);
-
                     }
                     break;
             }

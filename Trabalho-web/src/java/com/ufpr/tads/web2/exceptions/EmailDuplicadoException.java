@@ -1,15 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.exceptions;
-/**
- *
- * @author Luan 
- */
-public class EmailDuplicadoException extends AppException {
 
+public class EmailDuplicadoException extends AppException {
     public EmailDuplicadoException() {
         super();
     }
@@ -25,5 +16,4 @@ public class EmailDuplicadoException extends AppException {
     public EmailDuplicadoException(Throwable thrwbl) {
         super(thrwbl);
     }
-    
 }

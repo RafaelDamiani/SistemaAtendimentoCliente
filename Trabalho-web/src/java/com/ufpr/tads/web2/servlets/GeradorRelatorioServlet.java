@@ -1,4 +1,3 @@
-
 package com.ufpr.tads.web2.servlets;
 
 import com.ufpr.tads.web2.facade.GeradorRelatorioFacade;
@@ -26,20 +25,9 @@ import net.sf.jasperreports.engine.JRException;
  
 @WebServlet(name = "GeradorRelatorioServlet", urlPatterns = {"/GeradorRelatorioServlet"})
 public class GeradorRelatorioServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, MalformedURLException, JRException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        
             Connection conn = null;
          
             HttpSession session = request.getSession();

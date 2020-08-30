@@ -11,11 +11,10 @@ import com.ufpr.tads.web2.beans.CategoriaBean;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
 
 public class ProdutoDAO {
-
     Connection conn = null;
 
     public List<ProdutoBean> all() throws SQLException {
-        List<ProdutoBean> listaProdutos = new ArrayList<ProdutoBean>();
+        List<ProdutoBean> listaProdutos = new ArrayList<>();
         try {
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_produto");
@@ -29,14 +28,13 @@ public class ProdutoDAO {
                 produto.setCategoria(c);
                 listaProdutos.add(produto);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
         }
+
         return listaProdutos;
     }
 
@@ -58,22 +56,19 @@ public class ProdutoDAO {
                 int id = rs.getInt("id_categoria");
                 CategoriaBean cat = CategoriaFacade.buscarPorId(id);
                 produto.setCategoria(cat);
-            } else {
+            } else
                 produto = null;
-            }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return produto;
         }
     }
 
     public void insert(ProdutoBean produto) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -82,13 +77,11 @@ public class ProdutoDAO {
             statement.setDouble(2, produto.getPesoProduto());
             statement.setInt(3, produto.getCategoria().getIdCategoria());
             statement.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
-
         }
     }
 
@@ -104,7 +97,7 @@ public class ProdutoDAO {
             statement.executeUpdate();
             System.out.println("Categoria de id: " + produto.getIdProduto() + " alterado com sucesso");
             return 0;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return 1;
             //throw new RuntimeException("Erro ao atualizar cliente." + e.getMessage());
@@ -116,7 +109,6 @@ public class ProdutoDAO {
                     throw new RuntimeException("Erro ao fechar conexão.");
                 }
             }
-
         }
     }
 
@@ -127,10 +119,9 @@ public class ProdutoDAO {
                     "DELETE FROM tb_produto WHERE id_produto= ?");
             statement.setInt(1, id);
             statement.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Erro ao deletar produto.");
-
         } finally {
             if (conn != null) {
                 try {
@@ -139,7 +130,6 @@ public class ProdutoDAO {
                     throw new RuntimeException("Erro ao fechar conexão.");
                 }
             }
-
         }
     }
 }

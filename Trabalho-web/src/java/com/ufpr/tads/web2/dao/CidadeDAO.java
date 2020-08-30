@@ -16,7 +16,6 @@ public class CidadeDAO {
 
         List<CidadeBean> listaCidades = new ArrayList<CidadeBean>();
         try {
-
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_cidade");
 
@@ -29,14 +28,12 @@ public class CidadeDAO {
                 cidade.setEstado(estado);
                 listaCidades.add(cidade);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
             if (conn != null) {
                 conn.close();
             }
-
         }
         return listaCidades;
     }
@@ -57,16 +54,14 @@ public class CidadeDAO {
                 int idEstado = rs.getInt("id_estado"); 
                 EstadoBean estado = EstadoFacade.buscarEstadoCliente(idEstado);
                 cidade.setEstado(estado); 
-            } else {
+            } else
                cidade = null;
-            }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return cidade;
         }
     }
@@ -74,7 +69,7 @@ public class CidadeDAO {
     public List<CidadeBean> buscarCidadesPorEstado(int idEstado) throws SQLException {
          System.out.println(idEstado);
        conn = null; 
-         List<CidadeBean> listaCidades = new ArrayList<CidadeBean>();
+         List<CidadeBean> listaCidades = new ArrayList<>();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -91,17 +86,13 @@ public class CidadeDAO {
                 cidade.setNomeCidade(rs.getString("nome_cidade"));
                 listaCidades.add(cidade);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return listaCidades;
-        
         }
     }
-
-    
 }

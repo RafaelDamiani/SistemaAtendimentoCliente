@@ -9,11 +9,10 @@ import java.util.List;
 import com.ufpr.tads.web2.beans.TipoAtendimentoBean;
 
 public class TipoAtendimentoDAO {
-
     Connection conn = null;
 
     public List<TipoAtendimentoBean> all() throws SQLException {
-        List<TipoAtendimentoBean> listaTipoAtendimentos = new ArrayList<TipoAtendimentoBean>();
+        List<TipoAtendimentoBean> listaTipoAtendimentos = new ArrayList<>();
         try {
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_tipo_atendimento");
@@ -24,16 +23,13 @@ public class TipoAtendimentoDAO {
                 tipoAtendimento.setNomeTipoAtendimento(rs.getString("nome_tipo_atendimento"));
                 listaTipoAtendimentos.add(tipoAtendimento);
             }
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
-
         }
+
         return listaTipoAtendimentos;
     }
 
@@ -50,16 +46,14 @@ public class TipoAtendimentoDAO {
             if (rs.next()) {
                 tipoAtendimento.setIdTipoAtendimento(rs.getInt("id_tipo_atendimento"));
                 tipoAtendimento.setNomeTipoAtendimento(rs.getString("nome_tipo_atendimento"));
-            } else {
+            } else
                 tipoAtendimento = null;
-            }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return tipoAtendimento;
         }
     }

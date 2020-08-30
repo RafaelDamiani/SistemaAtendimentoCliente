@@ -15,7 +15,7 @@ public class CategoriaDAO {
     public List<CategoriaBean> all() throws SQLException {
         List<CategoriaBean> listaCategorias = null;
         try {
-            listaCategorias = new ArrayList<CategoriaBean>();
+            listaCategorias = new ArrayList<>();
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_categoria ORDER BY id_categoria");
             while (rs.next()) {
@@ -24,14 +24,11 @@ public class CategoriaDAO {
                 categoria.setNomeCategoria(rs.getString("nome_categoria"));
                 listaCategorias.add(categoria);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
-
         }
         return listaCategorias;
     }
@@ -48,16 +45,16 @@ public class CategoriaDAO {
             if (rs.next()) {
                 categoria.setIdCategoria(rs.getInt("id_categoria"));
                 categoria.setNomeCategoria(rs.getString("nome_categoria"));
-            } else {
+            } else
                 categoria = null;
-            }
+            
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
 
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return categoria;
         }
 
@@ -70,13 +67,11 @@ public class CategoriaDAO {
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn, "INSERT INTO tb_categoria values (null,?)");
             statement.setString(1, categoria.getNomeCategoria());
             statement.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
-
         }
     }
 
@@ -91,7 +86,7 @@ public class CategoriaDAO {
             System.out.println("Categoria de id: " + categoria.getIdCategoria() + "alterado com sucesso");
             return 0;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return 1;
             //throw new RuntimeException("Erro ao atualizar cliente." + e.getMessage());
@@ -114,7 +109,7 @@ public class CategoriaDAO {
                     "DELETE FROM tb_categoria WHERE id_categoria=?");
             statement.setInt(1, id);
             statement.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Erro ao deletar categoria.");
 

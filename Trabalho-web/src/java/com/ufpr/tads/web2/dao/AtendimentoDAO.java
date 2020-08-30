@@ -20,7 +20,6 @@ import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.TipoAtendimentoFacade;
 
 public class AtendimentoDAO {
-
     Connection conn = null;
 
     public List<AtendimentoBean> all() throws SQLException {
@@ -50,29 +49,22 @@ public class AtendimentoDAO {
                 atendimento.setTipoAtendimento(tipoAtendimento);
                 int weeks = (int) d.until(now(), ChronoUnit.WEEKS);
 
-                if (weeks > 1) {
+                if (weeks > 1)
                     atendimento.setPrioridade(1);
-                }
 
                 listaAtendimentos.add(atendimento);
-
             }
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
-
         }
         return listaAtendimentos;
-
     }
 
     public List<AtendimentoBean> buscarAtendimentosAbertos() throws SQLException {
-        List<AtendimentoBean> listaAtendimentos = new ArrayList<AtendimentoBean>();
+        List<AtendimentoBean> listaAtendimentos = new ArrayList<>();
         int id;
         try {
             conn = ConnectionFactory.getConnection();
@@ -97,28 +89,22 @@ public class AtendimentoDAO {
                 TipoAtendimentoBean tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
                 int weeks = (int) d.until(now(), ChronoUnit.WEEKS);
 
-                if (weeks > 1) {
+                if (weeks > 1)
                     atendimento.setPrioridade(1);
-                }
+
                 atendimento.setTipoAtendimento(tipoAtendimento);
                 listaAtendimentos.add(atendimento);  
             }
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
-
         }
         return listaAtendimentos;
-
     }
 
     public void insert(AtendimentoBean atendimento) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -140,13 +126,10 @@ public class AtendimentoDAO {
 
             statement.execute();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
-
         }
     }
 
@@ -178,16 +161,13 @@ public class AtendimentoDAO {
                 TipoAtendimentoBean tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
                 atendimento.setTipoAtendimento(tipoAtendimento);
 
-            } else {
+            } else
                 atendimento = null;
-            }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
             return atendimento;
         }
     }
@@ -226,14 +206,13 @@ public class AtendimentoDAO {
                 atendimento.setTipoAtendimento(tipoAtendimento);
                 listaAtendimentos.add(atendimento);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
 
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+            
             return listaAtendimentos;
-
         }
     }
     
@@ -247,12 +226,9 @@ public class AtendimentoDAO {
             statement.executeUpdate();
             System.out.println("Atendimento " + idAtendimento + " fechado");
             return 0;
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
             return 1;
             //throw new RuntimeException("Erro ao atualizar cliente." + e.getMessage());
-
         } finally {
             if (conn != null) {
                 try {
@@ -261,7 +237,6 @@ public class AtendimentoDAO {
                     throw new RuntimeException("Erro ao fechar conexão.");
                 }
             }
-
         }
     }
 
@@ -272,8 +247,7 @@ public class AtendimentoDAO {
                     "DELETE FROM tb_atendimento WHERE id_atendimento = ?");
             statement.setInt(1, idAtendimento);
             statement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
             throw new RuntimeException("Erro ao deletar cliente.");
         } finally {
             if (conn != null) {

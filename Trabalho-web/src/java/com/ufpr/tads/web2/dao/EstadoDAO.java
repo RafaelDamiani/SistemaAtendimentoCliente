@@ -11,10 +11,8 @@ import java.util.List;
 public class EstadoDAO {
     Connection conn = null;
     public List<EstadoBean> all() throws SQLException {
-
-        List<EstadoBean> listaEstados = new ArrayList<EstadoBean>();
+        List<EstadoBean> listaEstados = new ArrayList<>();
         try {
-
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_estado");
 
@@ -25,15 +23,14 @@ public class EstadoDAO {
                 estado.setSigla(rs.getString("sigla"));
                 listaEstados.add(estado);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
             if (conn != null) {
                 conn.close();
             }
-
         }
+
         return listaEstados;
     }
     
@@ -51,16 +48,14 @@ public class EstadoDAO {
                 estado.setIdEstado(rs.getInt("id_estado")); 
                 estado.setSigla(rs.getString("sigla"));
                 estado.setNomeEstado(rs.getString("nome_estado"));
-            } else {
+            } else
                estado = null;
-            }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return estado;
         }
     }

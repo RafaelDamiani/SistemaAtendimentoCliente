@@ -1,5 +1,5 @@
-
 package com.ufpr.tads.web2.dao;
+
 import com.ufpr.tads.web2.beans.UsuarioBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,12 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.ufpr.tads.web2.beans.CidadeBean;
 import com.ufpr.tads.web2.facade.CidadeFacade;
-/**
- *
- * @author Rafael 
- */
-public class UsuarioDAO {
 
+public class UsuarioDAO {
     List<UsuarioBean> listaUsuarios = new ArrayList<UsuarioBean>();
     Connection conn = null;
 
@@ -46,7 +42,6 @@ public class UsuarioDAO {
             }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
             if (conn != null) {
                 conn.close();
@@ -72,16 +67,14 @@ public class UsuarioDAO {
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("senha"));
                 user.setTipoUsuario(rs.getString("tipo_usuario"));
-            } else {
+            } else
                 user = null;
-            }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+            
             return user;
         }
     }
@@ -109,19 +102,19 @@ public class UsuarioDAO {
                 user.setTipoUsuario(rs.getString("tipo_usuario"));
                 int idCidade = rs.getInt("id_cidade");
                 CidadeBean cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                if (cidade != null) {
+
+                if (cidade != null)
                     user.setCidade(cidade);
-                }
-            } else {
+            } else
                 user = null;
-            }
-        } catch (Exception e) {
+            
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
 
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return user;
         }
     }
@@ -146,12 +139,11 @@ public class UsuarioDAO {
             statement.setString(11, tipoUsuario);
             statement.setInt(12, user.getCidade().getIdCidade());
             statement.execute();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
         }
     }
 
@@ -183,17 +175,13 @@ public class UsuarioDAO {
                 if (cidade != null) {
                     user.setCidade(cidade);
                 }
-            } else {
-                //ClienteNaoExisteException ex = new ClienteNaoExisteException(id);
-
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
-
         } finally {
-            if (conn != null) {
+            if (conn != null)
                 conn.close();
-            }
+
             return user;
         }
     }
@@ -217,9 +205,11 @@ public class UsuarioDAO {
             statement.setInt(12, user.getCidade().getIdCidade());
             statement.setInt(13, user.getIdUsuario());
             statement.executeUpdate();
+            
             System.out.println(tipoUsuario + " " + user.getNomeUsuario() + "alterado com sucesso");
+            
             return 0;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return 1;
             //throw new RuntimeException("Erro ao atualizar cliente." + e.getMessage());
@@ -241,10 +231,9 @@ public class UsuarioDAO {
                     "DELETE FROM tb_usuario WHERE id_usuario=?");
             statement.setInt(1, id);
             statement.execute();
-        } catch(Exception e){
+        } catch(SQLException e){
             e.printStackTrace();
-             throw new RuntimeException("Erro ao deletar usuário.");
-            
+            throw new RuntimeException("Erro ao deletar usuário.");
         }finally {
             if (conn != null) {
                 try {
@@ -276,9 +265,9 @@ public class UsuarioDAO {
                 user.setTipoUsuario(rs.getString("tipo_usuario"));
                 int idCidade = rs.getInt("id_cidade");
                 CidadeBean cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                if (cidade != null) {
+
+                if (cidade != null)
                     user.setCidade(cidade);
-                }
 
                 listaUsuarios.add(user);
             }

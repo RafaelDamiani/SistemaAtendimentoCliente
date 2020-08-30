@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.facade;
 
 import com.ufpr.tads.web2.beans.UsuarioBean;
@@ -12,10 +7,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
-/**
- *
- * @author Carolina 
- */
 
 public class UsuarioFacade {
     private static final UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -33,6 +24,7 @@ public class UsuarioFacade {
        System.out.println(senhahex);
        return senhahex;
     }
+    
     public static UsuarioBean buscarPorId(int id) throws SQLException{
         UsuarioBean usuario = usuarioDAO.findById(id);
         return usuario;
@@ -54,6 +46,7 @@ public class UsuarioFacade {
             return 1;
         }
     }
+    
     public static void remover(int id) {
        usuarioDAO.remove(id);
     }
@@ -66,7 +59,4 @@ public class UsuarioFacade {
     public static List<UsuarioBean> buscarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
-
-    
 }

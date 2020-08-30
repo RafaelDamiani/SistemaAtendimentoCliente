@@ -1,4 +1,3 @@
-
 package com.ufpr.tads.web2.servlets;
 
 import com.ufpr.tads.web2.beans.UsuarioBean;
@@ -18,25 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.ufpr.tads.web2.beans.LoginBean;
 import com.ufpr.tads.web2.facade.LoginFacade;
-/**
- *
- * @author Luan 
- */
+
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
-     * @throws java.io.UnsupportedEncodingException
-     * @throws java.security.NoSuchAlgorithmException
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, UnsupportedEncodingException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");

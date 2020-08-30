@@ -15,7 +15,6 @@ public class EnderecoDAO {
     }
     
     public void insertEndereço(EnderecoBean endereço) throws SQLException {
-
         String sql = "INSERT INTO tb_endereco "
                 + "(rua_endereco, numero_endereco, cep_endereco, id_cidade, referencia_endereco, id_referencia) "
                 + "VALUES ((?), (?), (?), (?), (?), (?));";
@@ -32,7 +31,6 @@ public class EnderecoDAO {
     }
     
     public void updateEndereçoById(EnderecoBean endereço) throws SQLException {
-        
         String sql = "UPDATE tb_endereco "
                 + "SET rua_endereco = (?), numero_endereco = (?), cep_endereco = (?), id_cidade = (?), referencia_endereco = (?), id_referencia = (?) "
                 + "WHERE id_endereco = (?);";
@@ -50,7 +48,6 @@ public class EnderecoDAO {
     }
     
     public void updateEndereçoByIdRefencia(EnderecoBean endereço) throws SQLException {
-        
         String sql = "UPDATE tb_endereco "
                 + "SET rua_endereco = (?), numero_endereco = (?), cep_endereco = (?), id_cidade = (?) "
                 + "WHERE id_referencia = (?) AND referencia_endereco = (?);";
@@ -67,7 +64,6 @@ public class EnderecoDAO {
     }
     
     public void deleteEndereçoById(int id) throws SQLException {
-        
         String sql = "DELETE FROM tb_endereco "
                 + "WHERE id_endereco = (?);";
         PreparedStatement st = conn.prepareStatement(sql);
@@ -78,7 +74,6 @@ public class EnderecoDAO {
     }
     
     public EnderecoBean selectEndereçoById(int id) throws SQLException {
-        
         String sql = "SELECT * "
                 + "FROM tb_endereco "
                 + "WHERE id_endereco = (?);";
@@ -102,7 +97,6 @@ public class EnderecoDAO {
     }
     
     public EnderecoBean selectEndereçoByIdReferenciaAndReferencia(int id, String referencia) throws SQLException {
-        
         String sql = "SELECT * "
                 + "FROM tb_endereco "
                 + "WHERE id_referencia = (?) AND referencia_endereco = (?);";
