@@ -1,10 +1,10 @@
 CREATE TABLE tb_estado(
     id_estado SERIAL PRIMARY KEY,
     nome_estado VARCHAR(100),
-    sigla_estado CHAR(2)
+    sigla CHAR(2)
 );
 
-INSERT INTO tb_estado (id_estado, nome_estado, sigla_estado) VALUES
+INSERT INTO tb_estado (id_estado, nome_estado, sigla) VALUES
 (1, 'Acre', 'AC'),
 (2, 'Alagoas', 'AL'),
 (3, 'Amazonas', 'AM'),

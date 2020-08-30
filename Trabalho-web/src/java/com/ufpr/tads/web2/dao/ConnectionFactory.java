@@ -7,16 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author Rafael 
- */
 public class ConnectionFactory {
     public static Connection getConnection() {
         
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "ipsec@01");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "*damiani*tech*");
            
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException (e);

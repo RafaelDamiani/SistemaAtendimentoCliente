@@ -1,4 +1,4 @@
-CREATE TABLE categoria(
-	idCat SERIAL PRIMARY KEY,
-	nome VARCHAR(20)
+CREATE TABLE tb_categoria(
+	id_categoria SERIAL PRIMARY KEY,
+	nome_categoria VARCHAR(20)
 );

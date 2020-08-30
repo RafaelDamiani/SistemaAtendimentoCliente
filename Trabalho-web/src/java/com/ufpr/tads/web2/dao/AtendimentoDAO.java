@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.dao;
 
 import java.sql.Connection;
@@ -23,10 +18,7 @@ import com.ufpr.tads.web2.beans.TipoAtendimento;
 import com.ufpr.tads.web2.facade.ProdutoFacade;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.TipoAtendimentoFacade;
-/**
- *
- * @author Carolina
- */
+
 public class AtendimentoDAO {
 
     Connection conn = null;
@@ -50,7 +42,6 @@ public class AtendimentoDAO {
                 id = rs.getInt("id_usuario");
                 Usuario usuario = UsuarioFacade.buscarPorId(id, "Cliente");
                 atendimento.setUsuario(usuario);
-                atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 atendimento.setProduto(produto);
                 atendimento.setSolucaoApresentada(rs.getString("solucao_apresentada"));
                 atendimento.setSituacao(rs.getString("situacao_atendimento"));

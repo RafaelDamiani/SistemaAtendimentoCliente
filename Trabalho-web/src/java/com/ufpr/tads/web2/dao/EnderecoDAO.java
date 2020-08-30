@@ -1,4 +1,3 @@
-
 package com.ufpr.tads.web2.dao;
 
 import com.ufpr.tads.web2.beans.Cidade;
@@ -8,10 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author Rafael 
- */
 public class EnderecoDAO {
     private Connection conn;
 

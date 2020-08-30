@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.dao;
 
 import java.sql.Connection;
@@ -14,10 +9,7 @@ import java.util.List;
 import com.ufpr.tads.web2.beans.Produto;
 import com.ufpr.tads.web2.beans.Categoria;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
-/**
- *
- * @author Alan
- */
+
 public class ProdutoDAO {
 
     Connection conn = null;

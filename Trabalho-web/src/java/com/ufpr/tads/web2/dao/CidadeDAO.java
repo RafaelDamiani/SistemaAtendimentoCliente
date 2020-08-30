@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.ufpr.tads.web2.facade.EstadoFacade;
 
-/**
- *
- * @author Luan 
- */
 public class CidadeDAO {
     Connection conn = null;
     public List<Cidade> all() throws SQLException {

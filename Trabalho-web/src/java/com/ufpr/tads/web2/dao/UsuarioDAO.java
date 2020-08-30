@@ -27,21 +27,21 @@ public class UsuarioDAO {
             while (rs.next()) {
                 Usuario user = new Usuario();
                 user.setIdUsuario(rs.getInt("id_usuario"));
+                user.setEmail(rs.getString("email"));
                 user.setNomeUsuario(rs.getString("nome"));
                 user.setCpf(rs.getString("cpf"));
-                user.setEmail(rs.getString("email"));
                 user.setTelefone(rs.getString("telefone"));
+                user.setCep(rs.getString("cep"));
                 user.setNomeRua(rs.getString("nome_rua"));
                 user.setNumeroRua(rs.getInt("numero_rua"));
                 user.setComplemento(rs.getString("complemento"));
                 user.setBairro(rs.getString("bairro"));
-                user.setCep(rs.getString("cep"));
                 int idCidade = rs.getInt("id_cidade");
 
                 Cidade cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                if (cidade != null) {
+                if (cidade != null)
                     user.setCidade(cidade);
-                }
+
                 listaUsuarios.add(user);
             }
         } catch (Exception e) {
