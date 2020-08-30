@@ -11,4 +11,4 @@ CREATE TABLE tb_atendimento(
 	CONSTRAINT fk_atendimento_produto FOREIGN KEY (id_produto) REFERENCES tb_produto(id_produto),
 	CONSTRAINT fk_atendimento_usuario FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
 	CONSTRAINT fk_atendimento_tipo_atendimento FOREIGN KEY (id_tipo_atendimento) REFERENCES tb_tipo_atendimento(id_tipo_atendimento)
-);
+); 
