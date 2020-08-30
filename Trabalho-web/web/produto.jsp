@@ -26,9 +26,9 @@
         
         <div class="row">
         <div class="col-sm-6">
-             <div class='text-center'> 
-                <h4>Produtos cadastradas no sistema</h4>
-             </div></br>
+            <div class='text-center'> 
+               <h4>Produtos cadastradas no sistema</h4>
+            </div></br>
 
             <c:choose>
                     <c:when test="${empty listaProdutos}" >
@@ -37,31 +37,28 @@
                         </div>    
                     </c:when>
             <c:otherwise>
-                        
-                            <table class='table text-center'>    
-                                <tr>
-                                    <th>id Produto</th>
-                                    <th>Nome do produto</th>
-                                    <th>Peso em kg/litro</th>
-                                    <th>Categoria</th>
-                                    <th>Editar/Excluir</th>
-                                </tr>
-
-                                <c:forEach items="${requestScope.listaProdutos}" var="p">
-                                    <tr>
-                                        <td><c:out value="${p.idProduto}"/></td>
-                                        <td><c:out value="${p.nomeProduto}"/></td>
-                                        <td><c:out value="${p.pesoProduto}"/></td>
-                                        <td><c:out value="${p.categoria.nomeCategoria}"/></td>
-                                        <td>
-                                            <a class="button" href="ProdutoServlet?action=formUpdate&id=${p.idProduto}" class="mr-3"><button><i class="far fa-edit fa-2x"></button></i></a>
-                                            <a href="#" data-toggle="modal" data-target="#myModal" ><button onclick="deleteId(${p.idProduto})"><i class="far fa-trash-alt fa-2x"></i></button></a> 
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </table>
-                      
-                </c:otherwise> 
+                <table class='table text-center'>    
+                    <tr>
+                        <th>id Produto</th>
+                        <th>Nome do produto</th>
+                        <th>Peso em kg/litro</th>
+                        <th>Categoria</th>
+                        <th>Editar/Excluir</th>
+                    </tr>
+                    <c:forEach items="${requestScope.listaProdutos}" var="p">
+                        <tr>
+                            <td><c:out value="${p.idProduto}"/></td>
+                            <td><c:out value="${p.nomeProduto}"/></td>
+                            <td><c:out value="${p.pesoProduto}"/></td>
+                            <td><c:out value="${p.categoria.nomeCategoria}"/></td>
+                            <td>
+                                <a class="button" href="ProdutoServlet?action=formUpdate&id=${p.idProduto}" class="mr-3"><button><i class="far fa-edit fa-2x"></button></i></a>
+                                <a href="#" data-toggle="modal" data-target="#myModal" ><button onclick="deleteId(${p.idProduto})"><i class="far fa-trash-alt fa-2x"></i></button></a> 
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:otherwise> 
             </c:choose>
 
             <div class="d-flex justify-content-center">
@@ -75,16 +72,19 @@
                 </div> 
                    
                 <form action="ProdutoServlet?action=${ac}" method="POST">
-                    <i class="far fa-calendar-alt p-2"></i> <label>Nome do produto : </label>
-                    <input  class="form-control mb-3" type="text" name="nome_produto" required value="${produto.nomeProduto}">
-                    <i class="far fa-calendar-alt p-2"></i> <label>Peso do produto : </label>
-                    <input  class="form-control mb-3" type="text" name="peso_produto" required value="${produto.pesoProduto}">
+                    <i class="far fa-calendar-alt p-2"></i> <label>Nome do produto: </label>
+                    <input class="form-control mb-3" type="text" name="nome_produto" required value="${produto.nomeProduto}">
                     <select id="estado" name="categoria_produto" class="form-control">
                         <option selected="selected">Selecione uma categoria</option>
                         <c:forEach var="c" items="${listaCategorias}">
                              <option <c:out value="${(produto.categoria.idCategoria == c.idCategoria) ? \"selected\" : \"\" }"/> value="<c:out value="${c.idCategoria}"/>"><c:out value="${c.nomeCategoria}"/></option>
                          </c:forEach>
-                    </select></br>
+                    </select>
+                    <i class="far fa-calendar-alt p-2"></i> <label>Descrição: </label>
+                    <input class="form-control mb-3" type="text" name="descricao_produto" required value="${produto.descricaoProduto}">
+                    <i class="far fa-calendar-alt p-2"></i> <label>Peso do produto (G): </label>
+                    <input class="form-control mb-3" type="number" min="1" name="peso_produto" required value="${produto.pesoProduto}">
+                    
                     <input type="text" name="id" value="${produto.idProduto}" hidden>
                     <div class="d-flex justify-content-center mt-5">
                         <a href="ProdutoServlet?action=list" class="btn btn-danger w-25 mr-3" type="submit">Cancelar</a>
@@ -112,7 +112,6 @@
 <script>
    function deleteId(numero)
     {
-
         $("#save").click(function() {
             var idProduto = numero;
 

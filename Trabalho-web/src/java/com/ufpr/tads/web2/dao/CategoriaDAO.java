@@ -64,7 +64,7 @@ public class CategoriaDAO {
 
         try {
             conn = ConnectionFactory.getConnection();
-            PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn, "INSERT INTO tb_categoria values (null,?)");
+            PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn, "INSERT INTO tb_categoria (nome_categoria) values (?)");
             statement.setString(1, categoria.getNomeCategoria());
             statement.execute();
         } catch (SQLException e) {

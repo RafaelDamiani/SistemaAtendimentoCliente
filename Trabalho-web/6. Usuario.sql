@@ -16,6 +16,6 @@ CREATE TABLE tb_usuario (
 	CONSTRAINT fk_usuario_cidade FOREIGN KEY (id_cidade) REFERENCES tb_cidade(id_cidade)
 );
 
-INSERT INTO tb_usuario (email, senha, tipo_usuario) VALUES ('admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', 'c');
-INSERT INTO tb_usuario (email, senha, tipo_usuario) VALUES ('organizador@organizador.com', '21232f297a57a5a743894a0e4a801fc3', 'f');
-INSERT INTO tb_usuario (email, senha, tipo_usuario) VALUES ('comprador@comprador.com', '21232f297a57a5a743894a0e4a801fc3', 'g');
+INSERT INTO tb_usuario (email, senha, tipo_usuario) VALUES ('admin@admin.com', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918', 'c');
+INSERT INTO tb_usuario (email, senha, tipo_usuario) VALUES ('organizador@organizador.com', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918', 'f');
+INSERT INTO tb_usuario (email, senha, tipo_usuario) VALUES ('comprador@comprador.com', '8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918', 'g');

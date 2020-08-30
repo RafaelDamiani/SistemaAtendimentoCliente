@@ -6,7 +6,7 @@
     <footer class="site-footer" style="background-color: #F6CEF5"> 
         <div class="d-flex justify-content-center">
             <p class="mt-4 text-black">
-                Todos os direitos reservados a Mochilas ©
+                Todos os direitos reservados a Cabeleleila Leila ©
             </p>
         </div>
     </footer>

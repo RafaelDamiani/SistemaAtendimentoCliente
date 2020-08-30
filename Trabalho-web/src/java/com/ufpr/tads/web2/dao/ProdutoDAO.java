@@ -23,6 +23,7 @@ public class ProdutoDAO {
                 ProdutoBean produto = new ProdutoBean();
                 produto.setIdProduto(rs.getInt("id_produto"));
                 produto.setNomeProduto(rs.getString("nome_produto"));
+                produto.setDescricaoProduto(rs.getString("descricao_produto"));
                 produto.setPesoProduto(rs.getInt("peso_produto"));
                 CategoriaBean c = CategoriaFacade.buscarPorId(rs.getInt("id_categoria"));
                 produto.setCategoria(c);
@@ -52,6 +53,7 @@ public class ProdutoDAO {
             if (rs.next()) {
                 produto.setIdProduto(rs.getInt("id_produto"));
                 produto.setNomeProduto(rs.getString("nome_produto"));
+                produto.setDescricaoProduto(rs.getString("descricao_produto"));
                 produto.setPesoProduto(rs.getDouble("peso_produto"));
                 int id = rs.getInt("id_categoria");
                 CategoriaBean cat = CategoriaFacade.buscarPorId(id);
@@ -72,10 +74,11 @@ public class ProdutoDAO {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
-                    "INSERT INTO tb_produto values (null,?,?,?)");
+                    "INSERT INTO tb_produto (nome_produto, descricao_produto, peso_produto, id_categoria) values (?,?,?,?)");
             statement.setString(1, produto.getNomeProduto());
-            statement.setDouble(2, produto.getPesoProduto());
-            statement.setInt(3, produto.getCategoria().getIdCategoria());
+            statement.setString(2, produto.getDescricaoProduto());
+            statement.setDouble(3, produto.getPesoProduto());
+            statement.setInt(4, produto.getCategoria().getIdCategoria());
             statement.execute();
         } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());
@@ -89,11 +92,12 @@ public class ProdutoDAO {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
-                    "UPDATE tb_produto SET nome_produto= ?, peso_produto =?, id_categoria=? WHERE id_produto=?");
+                    "UPDATE tb_produto SET nome_produto=?, descricao_produto=?, peso_produto=?, id_categoria=? WHERE id_produto=?");
             statement.setString(1, produto.getNomeProduto());
-            statement.setDouble(2, produto.getPesoProduto());
-            statement.setInt(3, produto.getCategoria().getIdCategoria());
-            statement.setInt(4, produto.getIdProduto());
+            statement.setString(2, produto.getDescricaoProduto());
+            statement.setDouble(3, produto.getPesoProduto());
+            statement.setInt(4, produto.getCategoria().getIdCategoria());
+            statement.setInt(5, produto.getIdProduto());
             statement.executeUpdate();
             System.out.println("Categoria de id: " + produto.getIdProduto() + " alterado com sucesso");
             return 0;
@@ -116,7 +120,7 @@ public class ProdutoDAO {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
-                    "DELETE FROM tb_produto WHERE id_produto= ?");
+                    "DELETE FROM tb_produto WHERE id_produto=?");
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException e) {

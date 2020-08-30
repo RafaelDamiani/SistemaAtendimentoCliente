@@ -3,6 +3,7 @@ package com.ufpr.tads.web2.beans;
 public class ProdutoBean {
     private int idProduto;
     private String nomeProduto;
+    private String descricaoProduto;
     private double pesoProduto;
     private CategoriaBean categoria;
     
@@ -23,6 +24,14 @@ public class ProdutoBean {
 
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
+    }
+
+    public String getDescricaoProduto() {
+        return descricaoProduto;
+    }
+
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
     }
 
     public CategoriaBean getCategoria() {

@@ -30,14 +30,14 @@ public class ProdutoServlet extends HttpServlet {
             String strId, strMessage;
             Double pesoProduto = 0.0;
             int id = 0;
-            List<ProdutoBean> listaProdutos = new ArrayList<ProdutoBean>();
-            List<CategoriaBean> listaCategorias = new ArrayList<CategoriaBean>();
+            List<ProdutoBean> listaProdutos = new ArrayList<>();
+            List<CategoriaBean> listaCategorias = new ArrayList<>();
             String action = request.getParameter("action");
             ProdutoBean produto = null;
             CategoriaBean categoria = null;
             switch (action) {
                 case "list":
-                    listaProdutos = new ArrayList<ProdutoBean>();
+                    listaProdutos = new ArrayList<>();
                     listaProdutos = ProdutoFacade.buscarTodos();
                     request.setAttribute("listaProdutos", listaProdutos);
                     rd = getServletContext().getRequestDispatcher("/produto.jsp");
@@ -78,6 +78,7 @@ public class ProdutoServlet extends HttpServlet {
                     produto = new ProdutoBean();
                     produto.setIdProduto(id);
                     produto.setNomeProduto(request.getParameter("nome_produto"));
+                    produto.setDescricaoProduto(request.getParameter("descricao_produto"));
                     pesoProduto = Double.parseDouble(request.getParameter("peso_produto"));
                     produto.setPesoProduto(pesoProduto);
                     id = Integer.parseInt(request.getParameter("categoria_produto"));
@@ -90,7 +91,7 @@ public class ProdutoServlet extends HttpServlet {
                             request.setAttribute("msg", strMessage);
                             listaProdutos = ProdutoFacade.buscarTodos();
                             request.setAttribute("listaProdutos", listaProdutos);
-                            rd = getServletContext().getRequestDispatcher("/produto/produto.jsp");
+                            rd = getServletContext().getRequestDispatcher("/produto.jsp");
                             rd.forward(request, response);
 
                         } else {
@@ -107,7 +108,7 @@ public class ProdutoServlet extends HttpServlet {
                     request.setAttribute("listaProdutos", listaProdutos);
                     listaCategorias = CategoriaFacade.buscarTodos();
                     request.setAttribute("listaCategorias", listaCategorias);
-                    rd = getServletContext().getRequestDispatcher("/produto/produto.jsp");
+                    rd = getServletContext().getRequestDispatcher("/produto.jsp");
                     rd.forward(request, response);
                     break;
 
@@ -115,6 +116,7 @@ public class ProdutoServlet extends HttpServlet {
                     produto = new ProdutoBean();
                     produto.setIdProduto(id);
                     produto.setNomeProduto(request.getParameter("nome_produto"));
+                    produto.setDescricaoProduto(request.getParameter("descricao_produto"));
                     pesoProduto = Double.parseDouble(request.getParameter("peso_produto"));
                     produto.setPesoProduto(pesoProduto);
                     id = Integer.parseInt(request.getParameter("categoria_produto"));
@@ -126,7 +128,7 @@ public class ProdutoServlet extends HttpServlet {
                         request.setAttribute("msg", strMessage);
                         listaProdutos = ProdutoFacade.buscarTodos();
                         request.setAttribute("listaProdutos", listaProdutos);
-                        rd = getServletContext().getRequestDispatcher("/produto/produto.jsp");
+                        rd = getServletContext().getRequestDispatcher("/produto.jsp");
                         rd.forward(request, response);
                     } else {
                         request.setAttribute("msg", "Acesso Inválido  para cadastrar usuário. ");
@@ -177,13 +179,7 @@ public class ProdutoServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

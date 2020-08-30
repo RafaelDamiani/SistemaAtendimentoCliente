@@ -11,16 +11,12 @@
         <jsp:include page="/nav.jsp" />
         <div class="container">
             <div class="row">
-
                 <div class='container col-md-6 text-center'>
                     <div class='align-self-center m-5'>
                         <h4>Atendimentos cadastrados</h4>
                     </div>
                 </div>
-
-
                 <div class="col-md-12 col-md-offset-2">
-
                     <div class='d-flex justify-content-center m-5'>
                         <c:if test="${empty meusAtendimentos}">
                             <div class="text-center">
@@ -43,13 +39,15 @@
                                         <td><c:out value="${atendimento.produto.nomeProduto}" /></td>
                                         <td><c:out value="${atendimento.usuario.nomeUsuario}"/></td>
                                         <td>
-                                            <a  class="mr-3" href="AtendimentoServlet?action=show&id=${atendimento.idAtendimento}"><button><i class="far fa-eye fa-2x"></i></button></a>
+                                            <a class="mr-3" 
+                                               href="AtendimentoServlet?action=show&id=${atendimento.idAtendimento}">
+                                                <button><i class="far fa-eye fa-2x"></i></button>
+                                            </a>
                                         </td>
                                     </tr>
                                 </c:forEach>
                             </table>
                         </c:if>
-
                     </div>
                 </div>
             </div>
@@ -57,7 +55,5 @@
         <div>
             <jsp:include page="/footer.jsp" />
         </div>
-
     </body
-
 </html>
