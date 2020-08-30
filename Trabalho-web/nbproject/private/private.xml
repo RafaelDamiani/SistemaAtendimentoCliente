@@ -3,12 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/beans/Atendimento.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/beans/Cidade.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/beans/Endereco.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/beans/Categoria.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/dao/CategoriaDAO.java</file>
-            <file>file:/C:/Users/Patchelli/Documents/GitHub/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/beans/ConfigBean.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/categoria.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/AutoCadastro.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/error.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/relatorio.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/clienteVisualizar.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/head.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/clientesListar.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/validationLoginBean.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/portal.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/servlets/LoginServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/nav.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/loginusar.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/modalRemove.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/login.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/index.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/src/java/com/ufpr/tads/web2/facade/GeradorRelatorioFacade.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/produto.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/funcionarioForm.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/funcionarioListar.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/erro.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/cadastro.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/clienteForm.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/listarTodosAtendimentos.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/meusAtendimentos.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/footer.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/responderAtendimento.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/funcionarioVisualizar.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/atendimentoDetalhe.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/WebII/SistemaAtendimentoCliente/Trabalho-web/web/funcionarioAtendimento.jsp</file>
         </group>
     </open-files>
 </project-private>
