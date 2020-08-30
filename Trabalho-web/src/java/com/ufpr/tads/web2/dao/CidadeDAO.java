@@ -1,7 +1,7 @@
 package com.ufpr.tads.web2.dao;
 
-import com.ufpr.tads.web2.beans.Cidade;
-import com.ufpr.tads.web2.beans.Estado;
+import com.ufpr.tads.web2.beans.CidadeBean;
+import com.ufpr.tads.web2.beans.EstadoBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,20 +12,20 @@ import com.ufpr.tads.web2.facade.EstadoFacade;
 
 public class CidadeDAO {
     Connection conn = null;
-    public List<Cidade> all() throws SQLException {
+    public List<CidadeBean> all() throws SQLException {
 
-        List<Cidade> listaCidades = new ArrayList<Cidade>();
+        List<CidadeBean> listaCidades = new ArrayList<CidadeBean>();
         try {
 
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_cidade");
 
             while (rs.next()) {
-                Cidade cidade = new Cidade();
+                CidadeBean cidade = new CidadeBean();
                 cidade.setIdCidade(rs.getInt("id_cidade")); 
                 cidade.setNomeCidade(rs.getString("nome_cidade"));
                 int idEstado = rs.getInt("id_estado"); 
-                Estado estado = EstadoFacade.buscarEstadoCliente(idEstado);
+                EstadoBean estado = EstadoFacade.buscarEstadoCliente(idEstado);
                 cidade.setEstado(estado);
                 listaCidades.add(cidade);
             }
@@ -41,9 +41,9 @@ public class CidadeDAO {
         return listaCidades;
     }
     
-     public Cidade buscarPorId(int idCidade) throws SQLException{
+     public CidadeBean buscarPorId(int idCidade) throws SQLException{
          conn = null;
-         Cidade cidade = new Cidade();
+         CidadeBean cidade = new CidadeBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -55,7 +55,7 @@ public class CidadeDAO {
                 cidade.setIdCidade(rs.getInt("id_cidade")); 
                 cidade.setNomeCidade(rs.getString("nome_cidade"));
                 int idEstado = rs.getInt("id_estado"); 
-                Estado estado = EstadoFacade.buscarEstadoCliente(idEstado);
+                EstadoBean estado = EstadoFacade.buscarEstadoCliente(idEstado);
                 cidade.setEstado(estado); 
             } else {
                cidade = null;
@@ -71,10 +71,10 @@ public class CidadeDAO {
         }
     }
      
-    public List<Cidade> buscarCidadesPorEstado(int idEstado) throws SQLException {
+    public List<CidadeBean> buscarCidadesPorEstado(int idEstado) throws SQLException {
          System.out.println(idEstado);
        conn = null; 
-         List<Cidade> listaCidades = new ArrayList<Cidade>();
+         List<CidadeBean> listaCidades = new ArrayList<CidadeBean>();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -83,10 +83,10 @@ public class CidadeDAO {
             statement.execute();
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                Cidade cidade = new Cidade();
+                CidadeBean cidade = new CidadeBean();
                 cidade.setIdCidade(rs.getInt("id_cidade"));
                 idEstado = rs.getInt("id_estado");
-                Estado estado = EstadoFacade.buscarEstadoCliente(idEstado);
+                EstadoBean estado = EstadoFacade.buscarEstadoCliente(idEstado);
                 cidade.setEstado(estado);
                 cidade.setNomeCidade(rs.getString("nome_cidade"));
                 listaCidades.add(cidade);

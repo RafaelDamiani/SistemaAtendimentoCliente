@@ -1,20 +1,13 @@
-
 package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
 
-
-/**
- *
- * @author Wenderson
- */
-
-public class Cidade implements Serializable{
+public class CidadeBean implements Serializable{
     private int idCidade;
-    private Estado estado;
+    private EstadoBean estado;
     private String nomeCidade;
 
-    public Cidade() {
+    public CidadeBean() {
     }
 
     public int getIdCidade() {
@@ -25,11 +18,11 @@ public class Cidade implements Serializable{
         this.idCidade = idCidade;
     }
 
-    public Estado getEstado() {
+    public EstadoBean getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(EstadoBean estado) {
         this.estado = estado;
     }
 
@@ -40,6 +33,4 @@ public class Cidade implements Serializable{
     public void setNomeCidade(String nomeCidade) {
         this.nomeCidade = nomeCidade;
     }
-
-  
 }

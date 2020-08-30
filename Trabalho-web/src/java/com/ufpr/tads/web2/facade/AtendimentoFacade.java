@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import com.ufpr.tads.web2.beans.Atendimento;
+import com.ufpr.tads.web2.beans.AtendimentoBean;
 import com.ufpr.tads.web2.dao.AtendimentoDAO;
 /**
  *
@@ -19,22 +19,22 @@ public class AtendimentoFacade {
 
     public static final AtendimentoDAO atendimentoDAO = new AtendimentoDAO();
 
-    public static List<Atendimento> buscarTodosAtendimentos() throws SQLException {
-        List<Atendimento> listaAtendimentos = atendimentoDAO.all();
+    public static List<AtendimentoBean> buscarTodosAtendimentos() throws SQLException {
+        List<AtendimentoBean> listaAtendimentos = atendimentoDAO.all();
         return listaAtendimentos;
     }
 
-    public static List<Atendimento> buscarTodosAtendimentosAbertos() throws SQLException {
-        List<Atendimento> listaAtendimentos = atendimentoDAO.buscarAtendimentosAbertos();
+    public static List<AtendimentoBean> buscarTodosAtendimentosAbertos() throws SQLException {
+        List<AtendimentoBean> listaAtendimentos = atendimentoDAO.buscarAtendimentosAbertos();
         return listaAtendimentos;
     }
 
-    public static Atendimento buscarAtendimentoPorId(int id) throws SQLException {
-        Atendimento atendimento = atendimentoDAO.findById(id);
+    public static AtendimentoBean buscarAtendimentoPorId(int id) throws SQLException {
+        AtendimentoBean atendimento = atendimentoDAO.findById(id);
         return atendimento;
     }
 
-    public static void inserirAtendimento(Atendimento atendimento) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public static void inserirAtendimento(AtendimentoBean atendimento) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
         atendimentoDAO.insert(atendimento);
     }
 
@@ -48,8 +48,8 @@ public class AtendimentoFacade {
         return date;
     }
 
-    public static List<Atendimento> buscarTodosAtendimentosUser(int id) throws SQLException {
-        List<Atendimento> listaAtendimentos = atendimentoDAO.allByUser(id);
+    public static List<AtendimentoBean> buscarTodosAtendimentosUser(int id) throws SQLException {
+        List<AtendimentoBean> listaAtendimentos = atendimentoDAO.allByUser(id);
         return listaAtendimentos;
     }
 

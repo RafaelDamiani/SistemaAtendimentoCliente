@@ -1,6 +1,6 @@
 package com.ufpr.tads.web2.dao;
 
-import com.ufpr.tads.web2.beans.Estado;
+import com.ufpr.tads.web2.beans.EstadoBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,16 +10,16 @@ import java.util.List;
 
 public class EstadoDAO {
     Connection conn = null;
-    public List<Estado> all() throws SQLException {
+    public List<EstadoBean> all() throws SQLException {
 
-        List<Estado> listaEstados = new ArrayList<Estado>();
+        List<EstadoBean> listaEstados = new ArrayList<EstadoBean>();
         try {
 
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_estado");
 
             while (rs.next()) {
-                Estado estado = new Estado();
+                EstadoBean estado = new EstadoBean();
                 estado.setIdEstado(rs.getInt("id_estado")); 
                 estado.setNomeEstado(rs.getString("nome_estado"));
                 estado.setSigla(rs.getString("sigla"));
@@ -37,9 +37,9 @@ public class EstadoDAO {
         return listaEstados;
     }
     
-    public Estado buscarPorId(int idEstado) throws SQLException{
+    public EstadoBean buscarPorId(int idEstado) throws SQLException{
          conn = null;
-         Estado estado = new Estado();
+         EstadoBean estado = new EstadoBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,

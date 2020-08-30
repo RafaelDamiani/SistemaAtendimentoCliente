@@ -1,13 +1,8 @@
-
 package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Carolina 
- */
-public class Estado implements Serializable{
+public class EstadoBean implements Serializable{
        private int idEstado;
        private String sigla;
        private String nomeEstado;

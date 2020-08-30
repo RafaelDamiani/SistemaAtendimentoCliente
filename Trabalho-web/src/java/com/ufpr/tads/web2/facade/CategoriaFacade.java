@@ -7,7 +7,7 @@ package com.ufpr.tads.web2.facade;
 
 import java.sql.SQLException;
 import java.util.List;
-import com.ufpr.tads.web2.beans.Categoria;
+import com.ufpr.tads.web2.beans.CategoriaBean;
 import com.ufpr.tads.web2.dao.CategoriaDAO;
         ;
 /**
@@ -18,13 +18,13 @@ public class CategoriaFacade {
 
     private static final CategoriaDAO categoriaDAO = new CategoriaDAO();
 
-    public static List<Categoria> buscarTodos() throws SQLException {
-        List<Categoria> categorias = categoriaDAO.all();
+    public static List<CategoriaBean> buscarTodos() throws SQLException {
+        List<CategoriaBean> categorias = categoriaDAO.all();
         return categorias;
     }
 
-    public static Categoria buscarPorId(int id) throws SQLException {
-        Categoria categoria = categoriaDAO.findById(id);
+    public static CategoriaBean buscarPorId(int id) throws SQLException {
+        CategoriaBean categoria = categoriaDAO.findById(id);
         return categoria;
     }
 
@@ -32,11 +32,11 @@ public class CategoriaFacade {
         categoriaDAO.remove(id);
     }
 
-    public static int alterar(Categoria categoria) {
+    public static int alterar(CategoriaBean categoria) {
         return categoriaDAO.alterar(categoria);
     }
 
-    public static void inserir(Categoria categoria) throws IllegalAccessException, InstantiationException, ClassNotFoundException, SQLException {
+    public static void inserir(CategoriaBean categoria) throws IllegalAccessException, InstantiationException, ClassNotFoundException, SQLException {
         categoriaDAO.insert(categoria);
     }
 }

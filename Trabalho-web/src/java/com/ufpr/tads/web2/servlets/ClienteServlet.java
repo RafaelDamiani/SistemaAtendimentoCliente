@@ -21,9 +21,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.ufpr.tads.web2.beans.Estado;
-import com.ufpr.tads.web2.beans.Cidade;
-import com.ufpr.tads.web2.beans.Usuario;
+import com.ufpr.tads.web2.beans.EstadoBean;
+import com.ufpr.tads.web2.beans.CidadeBean;
+import com.ufpr.tads.web2.beans.UsuarioBean;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.EstadoFacade;
 import com.ufpr.tads.web2.facade.CidadeFacade;
@@ -50,25 +50,25 @@ public class ClienteServlet extends HttpServlet {
             HttpSession session = request.getSession();
             RequestDispatcher rd;
             String strId, senha, pass;
-            List<Estado> estados;
-            Cidade cidade;
+            List<EstadoBean> estados;
+            CidadeBean cidade;
             int id = 0, idCidade, numeroRua;
 
-            List<Usuario> listaUsuarios;
+            List<UsuarioBean> listaUsuarios;
             String action = request.getParameter("action");
             if (action == null) {
-                listaUsuarios = new ArrayList<Usuario>();
+                listaUsuarios = new ArrayList<UsuarioBean>();
                 listaUsuarios = UsuarioFacade.buscarTodos();
                 request.setAttribute("listaClientes", listaUsuarios);
                 rd = getServletContext().getRequestDispatcher("/clienteListar.jsp");
                 rd.forward(request, response);
 
             } else {
-                List<Usuario> listaUsers = new ArrayList<Usuario>();
-                Usuario user;
+                List<UsuarioBean> listaUsers = new ArrayList<UsuarioBean>();
+                UsuarioBean user;
                 switch (action) {
                     case "list":
-                        listaUsuarios = new ArrayList<Usuario>();
+                        listaUsuarios = new ArrayList<UsuarioBean>();
                         listaUsuarios = UsuarioFacade.buscarTodos();
                         request.setAttribute("listaClientes", listaUsuarios);
                         rd = getServletContext().getRequestDispatcher("/clienteListar.jsp");
@@ -117,7 +117,7 @@ public class ClienteServlet extends HttpServlet {
                     case "update":
                         strId = request.getParameter("id");
                         id = Integer.parseInt(strId);
-                        user = new Usuario();
+                        user = new UsuarioBean();
                         user.setIdUsuario(id);
                         user.setNomeUsuario(request.getParameter("nome"));
                         user.setCpf(request.getParameter("cpf"));
@@ -132,7 +132,7 @@ public class ClienteServlet extends HttpServlet {
                         user.setComplemento(request.getParameter("complemento"));
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
-                        cidade = new Cidade();
+                        cidade = new CidadeBean();
 
                         idCidade = Integer.parseInt(request.getParameter("cidade"));
                         cidade = CidadeFacade.buscarCidadeCliente(idCidade);
@@ -164,7 +164,7 @@ public class ClienteServlet extends HttpServlet {
                         break;
 
                     case "new":
-                        user = new Usuario();
+                        user = new UsuarioBean();
                         user.setNomeUsuario(request.getParameter("nome"));
                         user.setCpf(request.getParameter("cpf"));
                         user.setEmail(request.getParameter("email"));
@@ -178,7 +178,7 @@ public class ClienteServlet extends HttpServlet {
                         user.setComplemento(request.getParameter("complemento"));
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
-                        cidade = new Cidade();
+                        cidade = new CidadeBean();
 
                         idCidade = Integer.parseInt(request.getParameter("cidade"));
                         cidade = CidadeFacade.buscarCidadeCliente(idCidade);

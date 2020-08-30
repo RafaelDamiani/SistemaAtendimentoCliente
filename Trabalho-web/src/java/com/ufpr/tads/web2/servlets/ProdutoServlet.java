@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.ufpr.tads.web2.beans.Categoria;
-import com.ufpr.tads.web2.beans.Produto;
+import com.ufpr.tads.web2.beans.CategoriaBean;
+import com.ufpr.tads.web2.beans.ProdutoBean;
 import com.ufpr.tads.web2.facade.ProdutoFacade;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
 /**
@@ -48,14 +48,14 @@ public class ProdutoServlet extends HttpServlet {
             String strId, strMessage;
             Double pesoProduto = 0.0;
             int id = 0;
-            List<Produto> listaProdutos = new ArrayList<Produto>();
-            List<Categoria> listaCategorias = new ArrayList<Categoria>();
+            List<ProdutoBean> listaProdutos = new ArrayList<ProdutoBean>();
+            List<CategoriaBean> listaCategorias = new ArrayList<CategoriaBean>();
             String action = request.getParameter("action");
-            Produto produto = null;
-            Categoria categoria = null;
+            ProdutoBean produto = null;
+            CategoriaBean categoria = null;
             switch (action) {
                 case "list":
-                    listaProdutos = new ArrayList<Produto>();
+                    listaProdutos = new ArrayList<ProdutoBean>();
                     listaProdutos = ProdutoFacade.buscarTodos();
                     request.setAttribute("listaProdutos", listaProdutos);
                     rd = getServletContext().getRequestDispatcher("/produto.jsp");
@@ -93,7 +93,7 @@ public class ProdutoServlet extends HttpServlet {
                 case "update":
                     strId = request.getParameter("id");
                     id = Integer.parseInt(strId);
-                    produto = new Produto();
+                    produto = new ProdutoBean();
                     produto.setIdProduto(id);
                     produto.setNomeProduto(request.getParameter("nome_produto"));
                     pesoProduto = Double.parseDouble(request.getParameter("peso_produto"));
@@ -130,7 +130,7 @@ public class ProdutoServlet extends HttpServlet {
                     break;
 
                 case "new":
-                    produto = new Produto();
+                    produto = new ProdutoBean();
                     produto.setIdProduto(id);
                     produto.setNomeProduto(request.getParameter("nome_produto"));
                     pesoProduto = Double.parseDouble(request.getParameter("peso_produto"));

@@ -6,26 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.ufpr.tads.web2.beans.Produto;
-import com.ufpr.tads.web2.beans.Categoria;
+import com.ufpr.tads.web2.beans.ProdutoBean;
+import com.ufpr.tads.web2.beans.CategoriaBean;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
 
 public class ProdutoDAO {
 
     Connection conn = null;
 
-    public List<Produto> all() throws SQLException {
-        List<Produto> listaProdutos = new ArrayList<Produto>();
+    public List<ProdutoBean> all() throws SQLException {
+        List<ProdutoBean> listaProdutos = new ArrayList<ProdutoBean>();
         try {
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_produto");
 
             while (rs.next()) {
-                Produto produto = new Produto();
+                ProdutoBean produto = new ProdutoBean();
                 produto.setIdProduto(rs.getInt("id_produto"));
                 produto.setNomeProduto(rs.getString("nome_produto"));
                 produto.setPesoProduto(rs.getInt("peso_produto"));
-                Categoria c = CategoriaFacade.buscarPorId(rs.getInt("id_categoria"));
+                CategoriaBean c = CategoriaFacade.buscarPorId(rs.getInt("id_categoria"));
                 produto.setCategoria(c);
                 listaProdutos.add(produto);
             }
@@ -40,9 +40,9 @@ public class ProdutoDAO {
         return listaProdutos;
     }
 
-    public Produto findById(int idProduto) throws SQLException {
+    public ProdutoBean findById(int idProduto) throws SQLException {
         conn = null;
-        Produto produto = new Produto();
+        ProdutoBean produto = new ProdutoBean();
 
         try {
             conn = ConnectionFactory.getConnection();
@@ -56,7 +56,7 @@ public class ProdutoDAO {
                 produto.setNomeProduto(rs.getString("nome_produto"));
                 produto.setPesoProduto(rs.getDouble("peso_produto"));
                 int id = rs.getInt("id_categoria");
-                Categoria cat = CategoriaFacade.buscarPorId(id);
+                CategoriaBean cat = CategoriaFacade.buscarPorId(id);
                 produto.setCategoria(cat);
             } else {
                 produto = null;
@@ -72,7 +72,7 @@ public class ProdutoDAO {
         }
     }
 
-    public void insert(Produto produto) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public void insert(ProdutoBean produto) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
         try {
             conn = ConnectionFactory.getConnection();
@@ -92,7 +92,7 @@ public class ProdutoDAO {
         }
     }
 
-    public int alterar(Produto produto) {
+    public int alterar(ProdutoBean produto) {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,

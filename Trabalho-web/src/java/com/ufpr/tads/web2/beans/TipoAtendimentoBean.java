@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Wenderson
- */
-public class TipoAtendimento implements Serializable{
+public class TipoAtendimentoBean implements Serializable{
     private int idTipoAtendimento;
     private String nomeTipoAtendimento;
 
-    public TipoAtendimento() {
+    public TipoAtendimentoBean() {
     }
 
     public int getIdTipoAtendimento() {

@@ -6,20 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.ufpr.tads.web2.beans.TipoAtendimento;
+import com.ufpr.tads.web2.beans.TipoAtendimentoBean;
 
 public class TipoAtendimentoDAO {
 
     Connection conn = null;
 
-    public List<TipoAtendimento> all() throws SQLException {
-        List<TipoAtendimento> listaTipoAtendimentos = new ArrayList<TipoAtendimento>();
+    public List<TipoAtendimentoBean> all() throws SQLException {
+        List<TipoAtendimentoBean> listaTipoAtendimentos = new ArrayList<TipoAtendimentoBean>();
         try {
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_tipo_atendimento");
 
             while (rs.next()) {
-                TipoAtendimento tipoAtendimento = new TipoAtendimento();
+                TipoAtendimentoBean tipoAtendimento = new TipoAtendimentoBean();
                 tipoAtendimento.setIdTipoAtendimento(rs.getInt("id_tipo_atendimento"));
                 tipoAtendimento.setNomeTipoAtendimento(rs.getString("nome_tipo_atendimento"));
                 listaTipoAtendimentos.add(tipoAtendimento);
@@ -37,9 +37,9 @@ public class TipoAtendimentoDAO {
         return listaTipoAtendimentos;
     }
 
-    public TipoAtendimento buscarTipoAtendimentoPorId(int idAtendimento) throws SQLException {
+    public TipoAtendimentoBean buscarTipoAtendimentoPorId(int idAtendimento) throws SQLException {
         conn = null;
-        TipoAtendimento tipoAtendimento = new TipoAtendimento();
+        TipoAtendimentoBean tipoAtendimento = new TipoAtendimentoBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,

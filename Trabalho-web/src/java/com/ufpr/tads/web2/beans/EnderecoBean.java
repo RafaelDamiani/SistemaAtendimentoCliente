@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.beans;
 
-/**
- *
- * @author Rafael 
- */
-public class Endereco {
+public class EnderecoBean {
     private int id;
     private String rua;
     private int numero;
     private String cep;
-    private Cidade cidade;
+    private CidadeBean cidade;
     private String referencia;
     private int idReferencia;
 
-    public Endereco() {
+    public EnderecoBean() {
     }
 
     public int getId() {
@@ -53,11 +44,11 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public Cidade getCidade() {
+    public CidadeBean getCidade() {
         return cidade;
     }
 
-    public void setCidade(Cidade cidade) {
+    public void setCidade(CidadeBean cidade) {
         this.cidade = cidade;
     }
 
@@ -76,7 +67,4 @@ public class Endereco {
     public void setIdReferencia(int idReferencia) {
         this.idReferencia = idReferencia;
     }
-    
-    
-    
 }

@@ -5,7 +5,7 @@
  */
 package com.ufpr.tads.web2.facade;
 
-import com.ufpr.tads.web2.beans.Usuario;
+import com.ufpr.tads.web2.beans.UsuarioBean;
 import com.ufpr.tads.web2.dao.UsuarioDAO;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -33,21 +33,21 @@ public class UsuarioFacade {
        System.out.println(senhahex);
        return senhahex;
     }
-    public static Usuario buscarPorId(int id) throws SQLException{
-        Usuario usuario = usuarioDAO.findById(id);
+    public static UsuarioBean buscarPorId(int id) throws SQLException{
+        UsuarioBean usuario = usuarioDAO.findById(id);
         return usuario;
     }
 
-    public static Usuario buscarPorId(int id, String cliente) throws SQLException {
-       Usuario usuario = usuarioDAO.findById(id, cliente);
+    public static UsuarioBean buscarPorId(int id, String cliente) throws SQLException {
+       UsuarioBean usuario = usuarioDAO.findById(id, cliente);
        return usuario;
     }
 
-    public static void inserir(Usuario user, String tipoUsuario) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public static void inserir(UsuarioBean user, String tipoUsuario) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
        usuarioDAO.insert(user, tipoUsuario);
     }
 
-    public static int alterar(Usuario user, String tipoUsuario) {
+    public static int alterar(UsuarioBean user, String tipoUsuario) {
         if(usuarioDAO.alterar(user, tipoUsuario) == 0){
             return 0;
         } else{
@@ -58,12 +58,12 @@ public class UsuarioFacade {
        usuarioDAO.remove(id);
     }
 
-    public static List<Usuario> buscarTodosFuncionarios() {
-        List<Usuario> funcionarios = usuarioDAO.allFuncionarios();
+    public static List<UsuarioBean> buscarTodosFuncionarios() {
+        List<UsuarioBean> funcionarios = usuarioDAO.allFuncionarios();
         return funcionarios;
     }
 
-    public static List<Usuario> buscarTodos() {
+    public static List<UsuarioBean> buscarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    

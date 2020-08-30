@@ -1,27 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ufpr.tads.web2.beans;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-/**
- *
- * @author Wenderson
- */
-public class Atendimento {
 
+public class AtendimentoBean {
     private int idAtendimento;
     private LocalDateTime dataHoraAtendimento;
     private String descricaoAtendimento;
     private String situacao;
     private String solucaoApresentada;
-    private Produto produto;
-    private TipoAtendimento tipoAtendimento;
-    private Usuario usuario;
+    private ProdutoBean produto;
+    private TipoAtendimentoBean tipoAtendimento;
+    private UsuarioBean usuario;
     private int prioridade;
 
     public int getPrioridade() {
@@ -36,7 +27,7 @@ public class Atendimento {
         return java.util.Date.from(this.getDataHoraAtendimento().atZone(ZoneId.systemDefault()).toInstant());
     }
 
-    public Atendimento() {
+    public AtendimentoBean() {
     }
 
     public int getIdAtendimento() {
@@ -80,28 +71,27 @@ public class Atendimento {
         this.solucaoApresentada = solucaoApresentada;
     }
 
-    public Produto getProduto() {
+    public ProdutoBean getProduto() {
         return produto;
     }
 
-    public void setProduto(Produto produto) {
+    public void setProduto(ProdutoBean produto) {
         this.produto = produto;
     }
 
-    public TipoAtendimento getTipoAtendimento() {
+    public TipoAtendimentoBean getTipoAtendimento() {
         return tipoAtendimento;
     }
 
-    public void setTipoAtendimento(TipoAtendimento tipoAtendimento) {
+    public void setTipoAtendimento(TipoAtendimentoBean tipoAtendimento) {
         this.tipoAtendimento = tipoAtendimento;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioBean getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioBean usuario) {
         this.usuario = usuario;
     }
-
 }

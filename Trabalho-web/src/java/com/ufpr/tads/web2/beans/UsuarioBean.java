@@ -1,12 +1,8 @@
-
 package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
-/**
- *
- * @author Rafael 
- */
-public class Usuario implements Serializable {
+
+public class UsuarioBean implements Serializable {
     private int idUsuario;
     private String nomeUsuario;
     private String cpf;
@@ -18,10 +14,10 @@ public class Usuario implements Serializable {
     private String complemento;
     private String bairro;
     private String cep;
-    private Cidade cidade;
+    private CidadeBean cidade;
     private String tipoUsuario;
 
-    public Usuario() {
+    public UsuarioBean() {
     }
 
     public int getIdUsuario() {
@@ -112,11 +108,11 @@ public class Usuario implements Serializable {
         this.cep = cep;
     }
 
-    public Cidade getCidade() {
+    public CidadeBean getCidade() {
         return cidade;
     }
 
-    public void setCidade(Cidade cidade) {
+    public void setCidade(CidadeBean cidade) {
         this.cidade = cidade;
     }
 
@@ -132,6 +128,4 @@ public class Usuario implements Serializable {
     public String toString() {
         return "Usuario{" + "idUsuario=" + idUsuario + ", nomeUsuario=" + nomeUsuario + ", cpf=" + cpf + ", email=" + email + ", password=" + password + ", telefone=" + telefone + ", nomeRua=" + nomeRua + ", numeroRua=" + numeroRua + ", complemento=" + complemento + ", bairro=" + bairro + ", cep=" + cep + ", cidade=" + cidade + ", tipoUsuario=" + tipoUsuario + '}';
     }
-    
-    
 }

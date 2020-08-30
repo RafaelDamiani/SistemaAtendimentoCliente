@@ -20,10 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.ufpr.tads.web2.beans.LoginBean;
-import com.ufpr.tads.web2.beans.Atendimento;
-import com.ufpr.tads.web2.beans.TipoAtendimento;
-import com.ufpr.tads.web2.beans.Produto;
-import com.ufpr.tads.web2.beans.Usuario;
+import com.ufpr.tads.web2.beans.AtendimentoBean;
+import com.ufpr.tads.web2.beans.TipoAtendimentoBean;
+import com.ufpr.tads.web2.beans.ProdutoBean;
+import com.ufpr.tads.web2.beans.UsuarioBean;
 import com.ufpr.tads.web2.facade.TipoAtendimentoFacade;
 import com.ufpr.tads.web2.facade.ProdutoFacade;
 import com.ufpr.tads.web2.facade.AtendimentoFacade;
@@ -59,15 +59,15 @@ public class AtendimentoServlet extends HttpServlet {
                 rd.forward(request, response);
             } else {
                 String action = request.getParameter("action");
-                List<Atendimento> listaAtendimentos;
-                Atendimento atendimento;
+                List<AtendimentoBean> listaAtendimentos;
+                AtendimentoBean atendimento;
                 String strId;
                 int id;
                 switch (action) {
                     case "create":
-                        List<TipoAtendimento> listaTiposAtendimentos = TipoAtendimentoFacade.buscarTodosTiposAtendimentos();
-                        List<Produto> listaProdutos = ProdutoFacade.buscarTodos();                  
-                        Usuario user = LoginFacade.buscarUsuarioPorId(loginBean.getId());
+                        List<TipoAtendimentoBean> listaTiposAtendimentos = TipoAtendimentoFacade.buscarTodosTiposAtendimentos();
+                        List<ProdutoBean> listaProdutos = ProdutoFacade.buscarTodos();                  
+                        UsuarioBean user = LoginFacade.buscarUsuarioPorId(loginBean.getId());
                         request.setAttribute("listaTiposAtendimentos", listaTiposAtendimentos);
                         request.setAttribute("listaProdutos", listaProdutos);                        
                         request.setAttribute("user", user);
@@ -75,17 +75,17 @@ public class AtendimentoServlet extends HttpServlet {
                         rd.forward(request, response);
                     break;
                     case "new":
-                        atendimento = new Atendimento();
+                        atendimento = new AtendimentoBean();
                         int idTipoAtendimento = Integer.parseInt(request.getParameter("tipoAtendimento"));
-                        TipoAtendimento tipoAtendimento = new TipoAtendimento();
+                        TipoAtendimentoBean tipoAtendimento = new TipoAtendimentoBean();
                         tipoAtendimento.setIdTipoAtendimento(idTipoAtendimento);
                         atendimento.setTipoAtendimento(tipoAtendimento);
                         int idProduto = Integer.parseInt(request.getParameter("produto"));
-                        Produto p = new Produto();
+                        ProdutoBean p = new ProdutoBean();
                         p.setIdProduto(idProduto);
                         atendimento.setProduto(p);
                         int idCliente = loginBean.getId();
-                        Usuario c = new Usuario();
+                        UsuarioBean c = new UsuarioBean();
                         c.setIdUsuario(idCliente);
                         atendimento.setUsuario(c);
                         atendimento.setDescricaoAtendimento(request.getParameter("descricao"));

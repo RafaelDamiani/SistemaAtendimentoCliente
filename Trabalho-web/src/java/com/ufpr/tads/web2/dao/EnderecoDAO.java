@@ -1,7 +1,7 @@
 package com.ufpr.tads.web2.dao;
 
-import com.ufpr.tads.web2.beans.Cidade;
-import com.ufpr.tads.web2.beans.Endereco;
+import com.ufpr.tads.web2.beans.CidadeBean;
+import com.ufpr.tads.web2.beans.EnderecoBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ public class EnderecoDAO {
         this.conn = ConnectionFactory.getConnection();
     }
     
-    public void insertEndereço(Endereco endereço) throws SQLException {
+    public void insertEndereço(EnderecoBean endereço) throws SQLException {
 
         String sql = "INSERT INTO tb_endereco "
                 + "(rua_endereco, numero_endereco, cep_endereco, id_cidade, referencia_endereco, id_referencia) "
@@ -31,7 +31,7 @@ public class EnderecoDAO {
         st.executeUpdate();
     }
     
-    public void updateEndereçoById(Endereco endereço) throws SQLException {
+    public void updateEndereçoById(EnderecoBean endereço) throws SQLException {
         
         String sql = "UPDATE tb_endereco "
                 + "SET rua_endereco = (?), numero_endereco = (?), cep_endereco = (?), id_cidade = (?), referencia_endereco = (?), id_referencia = (?) "
@@ -49,7 +49,7 @@ public class EnderecoDAO {
         st.executeUpdate();
     }
     
-    public void updateEndereçoByIdRefencia(Endereco endereço) throws SQLException {
+    public void updateEndereçoByIdRefencia(EnderecoBean endereço) throws SQLException {
         
         String sql = "UPDATE tb_endereco "
                 + "SET rua_endereco = (?), numero_endereco = (?), cep_endereco = (?), id_cidade = (?) "
@@ -77,7 +77,7 @@ public class EnderecoDAO {
         st.executeUpdate();
     }
     
-    public Endereco selectEndereçoById(int id) throws SQLException {
+    public EnderecoBean selectEndereçoById(int id) throws SQLException {
         
         String sql = "SELECT * "
                 + "FROM tb_endereco "
@@ -85,14 +85,14 @@ public class EnderecoDAO {
         PreparedStatement st = conn.prepareStatement(sql);
         st.setInt(1, id);
         ResultSet rs = st.executeQuery();
-        Endereco endereço = new Endereco();
+        EnderecoBean endereço = new EnderecoBean();
         
         while (rs.next()) {
             endereço.setId(rs.getInt("id_endereco"));
             endereço.setRua(rs.getString("rua_endereco"));
             endereço.setNumero(rs.getInt("numero_endereco"));
             endereço.setCep(rs.getString("cep_endereco"));
-            Cidade cidade = new Cidade();
+            CidadeBean cidade = new CidadeBean();
             cidade.setIdCidade(rs.getInt("id_cidade"));
             endereço.setCidade(cidade);
             endereço.setReferencia(rs.getString("referencia_endereco"));
@@ -101,7 +101,7 @@ public class EnderecoDAO {
         return endereço;
     }
     
-    public Endereco selectEndereçoByIdReferenciaAndReferencia(int id, String referencia) throws SQLException {
+    public EnderecoBean selectEndereçoByIdReferenciaAndReferencia(int id, String referencia) throws SQLException {
         
         String sql = "SELECT * "
                 + "FROM tb_endereco "
@@ -110,14 +110,14 @@ public class EnderecoDAO {
         st.setInt(1, id);
         st.setString(2, referencia);
         ResultSet rs = st.executeQuery();
-        Endereco endereço = new Endereco();
+        EnderecoBean endereço = new EnderecoBean();
         
         while (rs.next()) {
             endereço.setId(rs.getInt("id_endereco"));
             endereço.setRua(rs.getString("rua_endereco"));
             endereço.setNumero(rs.getInt("numero_endereco"));
             endereço.setCep(rs.getString("cep_endereco"));
-            Cidade cidade = new Cidade();
+            CidadeBean cidade = new CidadeBean();
             cidade.setIdCidade(rs.getInt("id_cidade"));
             endereço.setCidade(cidade);
             endereço.setReferencia(rs.getString("referencia_endereco"));

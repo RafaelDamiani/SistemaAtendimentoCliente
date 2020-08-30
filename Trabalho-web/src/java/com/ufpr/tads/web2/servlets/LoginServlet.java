@@ -1,7 +1,7 @@
 
 package com.ufpr.tads.web2.servlets;
 
-import com.ufpr.tads.web2.beans.Usuario;
+import com.ufpr.tads.web2.beans.UsuarioBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String usuario = request.getParameter("email");
             String senha = request.getParameter("senha");
-            Usuario user = LoginFacade.buscarUsuario(usuario, senha);
+            UsuarioBean user = LoginFacade.buscarUsuario(usuario, senha);
 
             HttpSession session = request.getSession();
             if (user == null) {

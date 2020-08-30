@@ -1,7 +1,7 @@
 package com.ufpr.tads.web2.servlets;
 
 import com.google.gson.Gson;
-import com.ufpr.tads.web2.beans.Cidade;
+import com.ufpr.tads.web2.beans.CidadeBean;
 import com.ufpr.tads.web2.facade.CidadeFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +33,7 @@ public class AjaxServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String estado = request.getParameter("estadoId");
             int idEstado = Integer.parseInt(estado);
-            List<Cidade> listaCidadesPorEstado = new ArrayList<Cidade>();
+            List<CidadeBean> listaCidadesPorEstado = new ArrayList<CidadeBean>();
             listaCidadesPorEstado = CidadeFacade.buscarCidadesPorEstado(idEstado);
             String json = new Gson().toJson(listaCidadesPorEstado);
             response.setContentType("application/json");

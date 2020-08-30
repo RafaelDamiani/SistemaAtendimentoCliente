@@ -11,10 +11,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import com.ufpr.tads.web2.beans.Atendimento;
-import com.ufpr.tads.web2.beans.Produto;
-import com.ufpr.tads.web2.beans.Usuario;
-import com.ufpr.tads.web2.beans.TipoAtendimento;
+import com.ufpr.tads.web2.beans.AtendimentoBean;
+import com.ufpr.tads.web2.beans.ProdutoBean;
+import com.ufpr.tads.web2.beans.UsuarioBean;
+import com.ufpr.tads.web2.beans.TipoAtendimentoBean;
 import com.ufpr.tads.web2.facade.ProdutoFacade;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.TipoAtendimentoFacade;
@@ -23,30 +23,30 @@ public class AtendimentoDAO {
 
     Connection conn = null;
 
-    public List<Atendimento> all() throws SQLException {
-        List<Atendimento> listaAtendimentos = null;
+    public List<AtendimentoBean> all() throws SQLException {
+        List<AtendimentoBean> listaAtendimentos = null;
         int id;
         try {
-            listaAtendimentos = new ArrayList<Atendimento>();
+            listaAtendimentos = new ArrayList<AtendimentoBean>();
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_atendimento");
 
             while (rs.next()) {
-                Atendimento atendimento = new Atendimento();
+                AtendimentoBean atendimento = new AtendimentoBean();
                 atendimento.setIdAtendimento(rs.getInt("id_atendimento"));
                 Date data = rs.getTimestamp("data_atendimento");
                 LocalDateTime d = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
                 atendimento.setDataHoraAtendimento(d);
-                Produto produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
+                ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                Usuario usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
                 atendimento.setUsuario(usuario);
                 atendimento.setProduto(produto);
                 atendimento.setSolucaoApresentada(rs.getString("solucao_apresentada"));
                 atendimento.setSituacao(rs.getString("situacao_atendimento"));
                 id = rs.getInt("id_tipo_atendimento");
-                TipoAtendimento tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
+                TipoAtendimentoBean tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
                 atendimento.setTipoAtendimento(tipoAtendimento);
                 int weeks = (int) d.until(now(), ChronoUnit.WEEKS);
 
@@ -71,30 +71,30 @@ public class AtendimentoDAO {
 
     }
 
-    public List<Atendimento> buscarAtendimentosAbertos() throws SQLException {
-        List<Atendimento> listaAtendimentos = new ArrayList<Atendimento>();
+    public List<AtendimentoBean> buscarAtendimentosAbertos() throws SQLException {
+        List<AtendimentoBean> listaAtendimentos = new ArrayList<AtendimentoBean>();
         int id;
         try {
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_atendimento WHERE situacao_atendimento='N'");
 
             while (rs.next()) {
-                Atendimento atendimento = new Atendimento();
+                AtendimentoBean atendimento = new AtendimentoBean();
                 atendimento.setIdAtendimento(rs.getInt("id_atendimento"));
                 Date data = rs.getTimestamp("data_atendimento");
                 LocalDateTime d = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
                 atendimento.setDataHoraAtendimento(d);
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                Usuario usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
                 atendimento.setUsuario(usuario);
-                Produto produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
+                ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setProduto(produto);
                 atendimento.setSolucaoApresentada(rs.getString("solucao_apresentada"));
                 atendimento.setSituacao(rs.getString("situacao_atendimento"));
                 atendimento.setUsuario(usuario);
                 id = rs.getInt("id_tipo_atendimento");
-                TipoAtendimento tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
+                TipoAtendimentoBean tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
                 int weeks = (int) d.until(now(), ChronoUnit.WEEKS);
 
                 if (weeks > 1) {
@@ -117,7 +117,7 @@ public class AtendimentoDAO {
 
     }
 
-    public void insert(Atendimento atendimento) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public void insert(AtendimentoBean atendimento) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
         try {
             conn = ConnectionFactory.getConnection();
@@ -150,9 +150,9 @@ public class AtendimentoDAO {
         }
     }
 
-    public Atendimento findById(int id) throws SQLException {
+    public AtendimentoBean findById(int id) throws SQLException {
         conn = null;
-        Atendimento atendimento = new Atendimento();
+        AtendimentoBean atendimento = new AtendimentoBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -167,15 +167,15 @@ public class AtendimentoDAO {
                 atendimento.setDataHoraAtendimento(d);
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                Usuario usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
                 atendimento.setUsuario(usuario);
-                Produto produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
+                ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setProduto(produto);
                 atendimento.setSolucaoApresentada(rs.getString("solucao_apresentada"));
                 atendimento.setSituacao(rs.getString("situacao_atendimento"));
                 atendimento.setUsuario(usuario);
                 id = rs.getInt("id_tipo_atendimento");
-                TipoAtendimento tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
+                TipoAtendimentoBean tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
                 atendimento.setTipoAtendimento(tipoAtendimento);
 
             } else {
@@ -192,9 +192,9 @@ public class AtendimentoDAO {
         }
     }
 
-    public List<Atendimento> allByUser(int id) throws SQLException {
+    public List<AtendimentoBean> allByUser(int id) throws SQLException {
         conn = null;
-        List<Atendimento> listaAtendimentos = new ArrayList<Atendimento>();
+        List<AtendimentoBean> listaAtendimentos = new ArrayList<AtendimentoBean>();
 
         try {
             conn = ConnectionFactory.getConnection();
@@ -205,16 +205,16 @@ public class AtendimentoDAO {
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
-                Atendimento atendimento = new Atendimento();
+                AtendimentoBean atendimento = new AtendimentoBean();
                 atendimento.setIdAtendimento(rs.getInt("id_atendimento"));
                 Date data = rs.getTimestamp("data_atendimento");
                 LocalDateTime d = data.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
                 atendimento.setDataHoraAtendimento(d);
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                Usuario usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
                 atendimento.setUsuario(usuario);
-                Produto produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
+                ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setProduto(produto);
                 atendimento.setSolucaoApresentada(rs.getString("solucao_apresentada"));
                 atendimento.setSituacao(rs.getString("situacao_atendimento"));
@@ -222,7 +222,7 @@ public class AtendimentoDAO {
                 id = rs.getInt("id_tipo_atendimento");
 
                 System.out.println("usuario" + usuario.getNomeUsuario());
-                TipoAtendimento tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
+                TipoAtendimentoBean tipoAtendimento = TipoAtendimentoFacade.buscaTipoAtendimentoPorId(id);
                 atendimento.setTipoAtendimento(tipoAtendimento);
                 listaAtendimentos.add(atendimento);
             }

@@ -1,6 +1,6 @@
 
 package com.ufpr.tads.web2.dao;
-import com.ufpr.tads.web2.beans.Usuario;
+import com.ufpr.tads.web2.beans.UsuarioBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.ufpr.tads.web2.beans.Cidade;
+import com.ufpr.tads.web2.beans.CidadeBean;
 import com.ufpr.tads.web2.facade.CidadeFacade;
 /**
  *
@@ -17,15 +17,15 @@ import com.ufpr.tads.web2.facade.CidadeFacade;
  */
 public class UsuarioDAO {
 
-    List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+    List<UsuarioBean> listaUsuarios = new ArrayList<UsuarioBean>();
     Connection conn = null;
 
-    public List<Usuario> all() throws SQLException {
+    public List<UsuarioBean> all() throws SQLException {
         try {
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_usuario");
             while (rs.next()) {
-                Usuario user = new Usuario();
+                UsuarioBean user = new UsuarioBean();
                 user.setIdUsuario(rs.getInt("id_usuario"));
                 user.setEmail(rs.getString("email"));
                 user.setNomeUsuario(rs.getString("nome"));
@@ -38,7 +38,7 @@ public class UsuarioDAO {
                 user.setBairro(rs.getString("bairro"));
                 int idCidade = rs.getInt("id_cidade");
 
-                Cidade cidade = CidadeFacade.buscarCidadeCliente(idCidade);
+                CidadeBean cidade = CidadeFacade.buscarCidadeCliente(idCidade);
                 if (cidade != null)
                     user.setCidade(cidade);
 
@@ -55,8 +55,8 @@ public class UsuarioDAO {
         return listaUsuarios;
     }
 
-    public Usuario findByLogin(String login, String passwd) throws SQLException {
-        Usuario user = new Usuario();
+    public UsuarioBean findByLogin(String login, String passwd) throws SQLException {
+        UsuarioBean user = new UsuarioBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -66,7 +66,7 @@ public class UsuarioDAO {
             statement.execute();
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                user = new Usuario();
+                user = new UsuarioBean();
                 user.setIdUsuario(rs.getInt("id_usuario"));
                 user.setNomeUsuario(rs.getString("nome"));
                 user.setEmail(rs.getString("email"));
@@ -86,8 +86,8 @@ public class UsuarioDAO {
         }
     }
 
-    public Usuario findById(int idUser) throws SQLException {
-        Usuario user = new Usuario();
+    public UsuarioBean findById(int idUser) throws SQLException {
+        UsuarioBean user = new UsuarioBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -108,7 +108,7 @@ public class UsuarioDAO {
                 user.setCep(rs.getString("cep"));
                 user.setTipoUsuario(rs.getString("tipo_usuario"));
                 int idCidade = rs.getInt("id_cidade");
-                Cidade cidade = CidadeFacade.buscarCidadeCliente(idCidade);
+                CidadeBean cidade = CidadeFacade.buscarCidadeCliente(idCidade);
                 if (cidade != null) {
                     user.setCidade(cidade);
                 }
@@ -126,7 +126,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void insert(Usuario user, String tipoUsuario) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public void insert(UsuarioBean user, String tipoUsuario) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
         try {
             conn = ConnectionFactory.getConnection();
@@ -155,9 +155,9 @@ public class UsuarioDAO {
         }
     }
 
-    public Usuario findById(int id, String tipoUsuario) throws SQLException {
+    public UsuarioBean findById(int id, String tipoUsuario) throws SQLException {
         conn = null;
-        Usuario user = new Usuario();
+        UsuarioBean user = new UsuarioBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -179,7 +179,7 @@ public class UsuarioDAO {
                 user.setCep(rs.getString("cep"));
                 user.setTipoUsuario(rs.getString("tipo_usuario"));
                 int idCidade = rs.getInt("id_cidade");
-                Cidade cidade = CidadeFacade.buscarCidadeCliente(idCidade);
+                CidadeBean cidade = CidadeFacade.buscarCidadeCliente(idCidade);
                 if (cidade != null) {
                     user.setCidade(cidade);
                 }
@@ -198,7 +198,7 @@ public class UsuarioDAO {
         }
     }
 
-    public int alterar(Usuario user, String tipoUsuario) {
+    public int alterar(UsuarioBean user, String tipoUsuario) {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -256,13 +256,13 @@ public class UsuarioDAO {
         }
     }
   
-    public List<Usuario> allFuncionarios() {
+    public List<UsuarioBean> allFuncionarios() {
         try {
-            listaUsuarios = new ArrayList<Usuario>();
+            listaUsuarios = new ArrayList<UsuarioBean>();
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_usuario WHERE tipo_usuario='Funcionario' OR tipo_usuario='Gerente'");
             while (rs.next()) {
-                Usuario user = new Usuario();
+                UsuarioBean user = new UsuarioBean();
                 user.setIdUsuario(rs.getInt("id_usuario"));
                 user.setNomeUsuario(rs.getString("nome"));
                 user.setCpf(rs.getString("cpf"));
@@ -275,7 +275,7 @@ public class UsuarioDAO {
                 user.setCep(rs.getString("cep"));
                 user.setTipoUsuario(rs.getString("tipo_usuario"));
                 int idCidade = rs.getInt("id_cidade");
-                Cidade cidade = CidadeFacade.buscarCidadeCliente(idCidade);
+                CidadeBean cidade = CidadeFacade.buscarCidadeCliente(idCidade);
                 if (cidade != null) {
                     user.setCidade(cidade);
                 }

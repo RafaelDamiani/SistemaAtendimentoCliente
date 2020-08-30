@@ -6,20 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.ufpr.tads.web2.beans.Categoria;
+import com.ufpr.tads.web2.beans.CategoriaBean;
 
 public class CategoriaDAO {
 
     Connection conn = null;
 
-    public List<Categoria> all() throws SQLException {
-        List<Categoria> listaCategorias = null;
+    public List<CategoriaBean> all() throws SQLException {
+        List<CategoriaBean> listaCategorias = null;
         try {
-            listaCategorias = new ArrayList<Categoria>();
+            listaCategorias = new ArrayList<CategoriaBean>();
             conn = ConnectionFactory.getConnection();
             ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_categoria ORDER BY id_categoria");
             while (rs.next()) {
-                Categoria categoria = new Categoria();
+                CategoriaBean categoria = new CategoriaBean();
                 categoria.setIdCategoria(rs.getInt("id_categoria"));
                 categoria.setNomeCategoria(rs.getString("nome_categoria"));
                 listaCategorias.add(categoria);
@@ -36,8 +36,8 @@ public class CategoriaDAO {
         return listaCategorias;
     }
 
-    public Categoria findById(int id) throws SQLException {
-        Categoria categoria = new Categoria();
+    public CategoriaBean findById(int id) throws SQLException {
+        CategoriaBean categoria = new CategoriaBean();
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
@@ -63,7 +63,7 @@ public class CategoriaDAO {
 
     }
 
-    public void insert(Categoria categoria) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public void insert(CategoriaBean categoria) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
         try {
             conn = ConnectionFactory.getConnection();
@@ -80,7 +80,7 @@ public class CategoriaDAO {
         }
     }
 
-    public int alterar(Categoria categoria) {
+    public int alterar(CategoriaBean categoria) {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,

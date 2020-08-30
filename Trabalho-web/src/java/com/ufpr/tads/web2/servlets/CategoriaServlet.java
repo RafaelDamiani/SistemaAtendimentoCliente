@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.ufpr.tads.web2.beans.Categoria;
+import com.ufpr.tads.web2.beans.CategoriaBean;
 import com.ufpr.tads.web2.facade.CategoriaFacade;
 
 /**
@@ -46,12 +46,12 @@ public class CategoriaServlet extends HttpServlet {
             RequestDispatcher rd;
             String strId, strMessage;
             int id = 0;
-            List<Categoria> listaCategorias = new ArrayList<Categoria>();
+            List<CategoriaBean> listaCategorias = new ArrayList<CategoriaBean>();
             String action = request.getParameter("action");
-            Categoria categoria = null;
+            CategoriaBean categoria = null;
             switch (action) {
                 case "list":
-                    listaCategorias = new ArrayList<Categoria>();
+                    listaCategorias = new ArrayList<CategoriaBean>();
                     listaCategorias = CategoriaFacade.buscarTodos();
                     request.setAttribute("listaCategorias", listaCategorias);
                     rd = getServletContext().getRequestDispatcher("/categoria.jsp");
@@ -87,7 +87,7 @@ public class CategoriaServlet extends HttpServlet {
                 case "update":
                     strId = request.getParameter("id");
                     id = Integer.parseInt(strId);
-                    categoria = new Categoria();
+                    categoria = new CategoriaBean();
                     categoria.setIdCategoria(id);
                     categoria.setNomeCategoria(request.getParameter("nomeCategoria"));
 
@@ -118,7 +118,7 @@ public class CategoriaServlet extends HttpServlet {
                     break;
 
                 case "new":
-                    categoria = new Categoria();
+                    categoria = new CategoriaBean();
                     categoria.setNomeCategoria(request.getParameter("nomeCategoria"));
 
                     if (!categoria.getNomeCategoria().equals(null)) {

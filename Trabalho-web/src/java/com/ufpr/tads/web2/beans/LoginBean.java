@@ -1,22 +1,13 @@
-
 package com.ufpr.tads.web2.beans;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Luan 
- */
 public class LoginBean implements Serializable{
-    
     private int id;
-    
     private String nomeUsuario;
-    
     private String tipoUsuario;
     
     public LoginBean(){
-        
     }
     
     public int getId() {
