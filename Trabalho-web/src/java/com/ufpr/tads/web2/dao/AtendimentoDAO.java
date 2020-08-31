@@ -39,7 +39,7 @@ public class AtendimentoDAO {
                 ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "c");
                 atendimento.setUsuario(usuario);
                 atendimento.setProduto(produto);
                 atendimento.setSolucaoApresentada(rs.getString("solucao_apresentada"));
@@ -78,7 +78,7 @@ public class AtendimentoDAO {
                 atendimento.setDataHoraAtendimento(d);
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "c");
                 atendimento.setUsuario(usuario);
                 ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setProduto(produto);
@@ -150,7 +150,7 @@ public class AtendimentoDAO {
                 atendimento.setDataHoraAtendimento(d);
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "c");
                 atendimento.setUsuario(usuario);
                 ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setProduto(produto);
@@ -192,7 +192,7 @@ public class AtendimentoDAO {
                 atendimento.setDataHoraAtendimento(d);
                 atendimento.setDescricaoAtendimento(rs.getString("descricao_atendimento"));
                 id = rs.getInt("id_usuario");
-                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "Cliente");
+                UsuarioBean usuario = UsuarioFacade.buscarPorId(id, "c");
                 atendimento.setUsuario(usuario);
                 ProdutoBean produto = ProdutoFacade.buscarPorId(rs.getInt("id_produto"));
                 atendimento.setProduto(produto);

@@ -60,10 +60,6 @@
 
         <div class="d-flex justify-content-center">
             <a href='AtendimentoServlet?action=list' class='btn btn-primary col-1 ml-2' style='float: right; '>Voltar</a>
-
-            <c:if test="${atendimento.situacao == 'N'}">
-                <button data-toggle="modal"data-target="#myModal" class='btn btn-danger col-1 ml-2 ' id="idAtendimento" value="${atendimento.idAtendimento}">Delete</button>
-            </c:if>
         </div>
 
         <jsp:include page="/footer.jsp" />

@@ -61,7 +61,7 @@ public class ClienteServlet extends HttpServlet {
                     case "show":
                         strId = request.getParameter("id");
                         id = Integer.parseInt(strId);
-                        user = UsuarioFacade.buscarPorId(id, "Cliente");
+                        user = UsuarioFacade.buscarPorId(id, "c");
                         if (user != null) {
                             request.setAttribute("user", user);
                             rd = getServletContext().getRequestDispatcher("/clienteVisualizar.jsp");

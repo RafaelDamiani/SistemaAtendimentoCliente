@@ -39,12 +39,11 @@ public class UsuarioFacade {
        usuarioDAO.insert(user, tipoUsuario);
     }
 
-    public static int alterar(UsuarioBean user, String tipoUsuario) {
-        if(usuarioDAO.alterar(user, tipoUsuario) == 0){
+    public static int alterar(UsuarioBean user, String tipoUsuario) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        if(usuarioDAO.alterar(user, tipoUsuario) == 0)
             return 0;
-        } else{
+        else
             return 1;
-        }
     }
     
     public static void remover(int id) {

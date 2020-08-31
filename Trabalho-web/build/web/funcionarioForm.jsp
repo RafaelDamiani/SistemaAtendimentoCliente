@@ -74,17 +74,8 @@
 
                             <i class="fas fa-flag p-2"></i> <label> UF : </label>
 
-                            <select id="estado" name="estado" class="form-control">
-                                <option selected="selected">Selecione um estado</option>
-                                <c:forEach var="estado" items="${estados}">
-                                    <option <c:out value="${(funcionario.cidade.estado.idEstado == estado.idEstado) ? \"selected\" : \"\" }"/> value="<c:out value="${estado.idEstado}"/>"><c:out value="${estado.nomeEstado}"/></option>
-                                </c:forEach>
-                            </select></br>
-
-                            <i class="fas fa-city p-2"></i> <label> Cidade : </label>
-                            <select  class="form-control mb-3" type="text" id="cidade" name="cidade">
-                                <option selected value="<c:out value="${funcionario.cidade.idCidade}"/>"><c:out value="${funcionario.cidade.nomeCidade}"/></option>
-                            </select>
+                            <i class="fas fa-map-signs p-2"></i> <label> Cidade : </label>
+                            <input  class="form-control mb-3" type="text" name="cidade" required value="${funcionario.cidade}" minlength="5" maxlength="255">
                             
                             <i class="fas fa-city p-2"></i> <label for="cargo"> Cargo : </label>
                             <select class="form-control mb-3" type="text" id="cargo" name="cargo">

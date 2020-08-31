@@ -76,11 +76,12 @@ public class AtendimentoServlet extends HttpServlet {
 
                         if (atendimento != null) {
                             AtendimentoFacade.inserirAtendimento(atendimento);
-                            String strMessage = "Atendimento com id " + " inserido com sucesso!";
-                            request.setAttribute("msg", strMessage);
-                            //rd = getServletContext().getRequestDispatcher("AtendimentoServlet?action=list");
-                            //rd.forward(request, response);
-                            response.sendRedirect("/Trabalho-Web/AtendimentoServlet?action=list");
+                            listaAtendimentos = AtendimentoFacade.buscarTodosAtendimentosUser(loginBean.getId());
+                            if (listaAtendimentos != null) {
+                                request.setAttribute("meusAtendimentos", listaAtendimentos);
+                                rd = getServletContext().getRequestDispatcher("/meusAtendimentos.jsp");
+                                rd.forward(request, response);
+                            }
                         }
                         break;
                     case "list":
