@@ -220,7 +220,7 @@ public class AtendimentoDAO {
         try {
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
-                    "UPDATE beibe.tb_atendimento SET solucao_apresentada = ?, situacao_atendimento='S' WHERE id_atendimento = ?");
+                    "UPDATE tb_atendimento SET solucao_apresentada = ?, situacao_atendimento='S' WHERE id_atendimento = ?");
             statement.setString(1, solucao);
             statement.setInt(2, idAtendimento);
             statement.executeUpdate();

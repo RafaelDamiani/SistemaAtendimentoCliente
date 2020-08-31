@@ -52,7 +52,7 @@
                         <td><c:out value="${atendimento.usuario.nomeUsuario}"/></td>
                     </tr>
                     <tr>
-                        <c:if test="${loginBean.tipoUsuario == 'Funcionario'}">
+                        <c:if test="${loginBean.tipoUsuario == 'f'}">
                             <td><c:out value="${(atendimento.situacao == \"S\") ? \"Solução Apresentada\" : \"Responder Cliente\"}"/></td>
                             <c:if test="${atendimento.situacao == 'N'}">
                                 <td><textarea class="form-control" id="exampleTextarea" name="solucao" rows="3"></textarea></td>
@@ -62,9 +62,9 @@
                             </c:if>
                             
                         </c:if>
-                        <c:if test="${loginBean.tipoUsuario == 'Gerente'}">
+                        <c:if test="${loginBean.tipoUsuario == 'g'}">
                             <td><c:out value="Solução Apresentada p/ atendimento"/></td>
-                            <td> <c:out value="${atendimento.solucaoApresentada}"/> </td>
+                            <td><c:out value="${atendimento.solucaoApresentada}"/> </td>
                         </c:if>
                     </tr>
                 </table>
@@ -72,8 +72,8 @@
                 <div class="d-flex justify-content-center">
                     <a href='AtendimentoServlet?action=listarAbertos' class='btn btn-danger col-md-4 ml-2'>Voltar</a>
                     <c:if test="${atendimento.situacao == 'N'}">
-                        <c:if test="${loginBean.tipoUsuario == 'Funcionario'}">
-                            <input type="submit" class='btn btn-primary col-md-4 ml-2' id="idAtendimento"  value=" Enviar">
+                        <c:if test="${loginBean.tipoUsuario == 'f'}">
+                            <input type="submit" class='btn btn-primary col-md-4 ml-2' id="idAtendimento"  value="Enviar">
                         </c:if>
                     </c:if>
                 </div>

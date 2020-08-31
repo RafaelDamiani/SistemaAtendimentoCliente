@@ -133,7 +133,12 @@ public class AtendimentoServlet extends HttpServlet {
                         id = Integer.parseInt(strId);
                         String s = request.getParameter("solucao");
                         AtendimentoFacade.responderAtendimento(id, s);
-                        response.sendRedirect("/Trabalho-Web/AtendimentoServlet?action=listarAbertos");
+                        listaAtendimentos = AtendimentoFacade.buscarTodosAtendimentosAbertos();
+                        if (listaAtendimentos != null) {
+                            request.setAttribute("atendimentosEmAberto", listaAtendimentos);
+                            rd = getServletContext().getRequestDispatcher("/funcionarioAtendimento.jsp");
+                            rd.forward(request, response);
+                        }
                     break;
                     case "listarTodosAtendimentos":
                        listaAtendimentos = AtendimentoFacade.buscarTodosAtendimentos();

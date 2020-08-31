@@ -22,7 +22,6 @@
             <c:when test="${loginBean.tipoUsuario == 'g'}">
                 <a class="nav-item nav-link active" style="color: #fff" href="FuncionarioServlet?action=formNew">Cadastrar Funcionário/Gerente</a>
                 <a class="nav-item nav-link active" style="color: #fff" href="FuncionarioServlet?action=list">Listar Funcionários</a>
-                <a class="nav-item nav-link active" style="color: #fff" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Atendimentos</a>
                 <a class="nav-item nav-link active" style="color: #fff" href="AtendimentoServlet?action=listarAbertos">Listar todos os atendimentos em aberto</a>
                 <a class="nav-item nav-link active" style="color: #fff" href="AtendimentoServlet?action=listarTodosAtendimentos">Listar todos os atendimentos</a>
                 <a class="nav-item nav-link active" style="color: #fff"href="relatorio.jsp" aria-haspopup="true" aria-expanded="false">Gerar Relatórios</a>

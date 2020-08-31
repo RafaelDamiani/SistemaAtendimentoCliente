@@ -10,7 +10,7 @@ CREATE TABLE tb_usuario (
     numero_rua INT,
     complemento VARCHAR(100),
     bairro VARCHAR(30),
-    tipo_usuario CHAR(1) CHECK (tipo_usuario IN ('c', 'f', 'g')),
+    tipo_usuario varchar(1) CHECK (tipo_usuario IN ('c', 'f', 'g')),
     ativo_usuario BOOLEAN DEFAULT true,
 	cidade varchar(255)	
 );

@@ -117,6 +117,8 @@ public class UsuarioDAO {
     public void insert(UsuarioBean user, String tipoUsuario) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
         try {
+            String tipoUsuarioChar = tipoUsuario.equals("Funcionario") ? "f" : "g";
+            
             conn = ConnectionFactory.getConnection();
             PreparedStatement statement = ConnectionFactory.getPreparedStatement(conn,
                     "INSERT INTO tb_usuario (nome, cpf ,email , senha, telefone, nome_rua, numero_rua, complemento, bairro, cep, tipo_usuario, cidade)"
@@ -131,7 +133,7 @@ public class UsuarioDAO {
             statement.setString(8, user.getComplemento());
             statement.setString(9, user.getBairro());
             statement.setString(10, user.getCep());
-            statement.setString(11, tipoUsuario);
+            statement.setString(11, tipoUsuarioChar);
             statement.setString(12, user.getCidade());
             statement.execute();
         } catch (SQLException e) {
@@ -249,7 +251,7 @@ public class UsuarioDAO {
         try {
             listaUsuarios = new ArrayList<UsuarioBean>();
             conn = ConnectionFactory.getConnection();
-            ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_usuario WHERE tipo_usuario='Funcionario' OR tipo_usuario='Gerente'");
+            ResultSet rs = ConnectionFactory.getResultSet(conn, "SELECT * FROM tb_usuario WHERE tipo_usuario='f' OR tipo_usuario='g'");
             while (rs.next()) {
                 UsuarioBean user = new UsuarioBean();
                 user.setIdUsuario(rs.getInt("id_usuario"));

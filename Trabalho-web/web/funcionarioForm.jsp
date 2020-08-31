@@ -72,8 +72,6 @@
                             <i class="fas fa-map-marker-alt p-2"></i> <label> CEP : </label>
                             <input  class="form-control mb-3 cep" type="text" name="cep" required value="${funcionario.cep}" minlength="8" maxlength="8">
 
-                            <i class="fas fa-flag p-2"></i> <label> UF : </label>
-
                             <i class="fas fa-map-signs p-2"></i> <label> Cidade : </label>
                             <input  class="form-control mb-3" type="text" name="cidade" required value="${funcionario.cidade}" minlength="5" maxlength="255">
                             

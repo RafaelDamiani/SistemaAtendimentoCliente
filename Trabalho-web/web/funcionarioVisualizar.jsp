@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html>
-    <head><jsp:include page="/head.jsp"/></head>
+    <head><jsp:include page="/head.jsp"/></head> 
     <body>
     
         <jsp:include page="/nav.jsp"/>
