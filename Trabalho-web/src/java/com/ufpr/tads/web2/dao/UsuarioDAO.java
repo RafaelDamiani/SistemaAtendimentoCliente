@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 import com.ufpr.tads.web2.beans.CidadeBean;
 import com.ufpr.tads.web2.facade.CidadeFacade;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 public class UsuarioDAO {
     List<UsuarioBean> listaUsuarios = new ArrayList<UsuarioBean>();
@@ -173,7 +175,7 @@ public class UsuarioDAO {
         }
     }
 
-    public int alterar(UsuarioBean user, String tipoUsuario) {
+    public int alterar(UsuarioBean user, String tipoUsuario) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         try {
             conn = ConnectionFactory.getConnection();
             

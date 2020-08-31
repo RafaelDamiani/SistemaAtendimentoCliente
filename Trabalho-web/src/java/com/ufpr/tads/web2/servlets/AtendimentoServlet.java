@@ -52,7 +52,7 @@ public class AtendimentoServlet extends HttpServlet {
                         request.setAttribute("listaTiposAtendimentos", listaTiposAtendimentos);
                         request.setAttribute("listaProdutos", listaProdutos);                        
                         request.setAttribute("user", user);
-                        rd = getServletContext().getRequestDispatcher("/atendimento/atendimento.jsp");
+                        rd = getServletContext().getRequestDispatcher("/atendimento.jsp");
                         rd.forward(request, response);
                     break;
                     case "new":
