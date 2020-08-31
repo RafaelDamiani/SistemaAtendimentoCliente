@@ -116,11 +116,7 @@ public class FuncionarioServlet extends HttpServlet {
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
                         user.setTipoUsuario(request.getParameter("cargo"));
-                        cidade = new CidadeBean();
-
-                        idCidade = Integer.parseInt(request.getParameter("cidade"));
-                        cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                        user.setCidade(cidade);
+                        user.setCidade(request.getParameter("cidade"));
 
                         if (!user.getNomeUsuario().equals(null) && !user.getCpf().equals(null) && !user.getEmail().equals(null)) {
 
@@ -162,11 +158,7 @@ public class FuncionarioServlet extends HttpServlet {
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
                         user.setTipoUsuario(request.getParameter("cargo"));
-                        cidade = new CidadeBean();
-
-                        idCidade = Integer.parseInt(request.getParameter("cidade"));
-                        cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                        user.setCidade(cidade);
+                        user.setCidade(request.getParameter("cidade"));
 
                         if (!user.getNomeUsuario().equals(null) && !user.getCpf().equals(null) && !user.getEmail().equals(null)) {
                             UsuarioFacade.inserir(user, user.getTipoUsuario());

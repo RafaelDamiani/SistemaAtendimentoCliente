@@ -43,14 +43,8 @@
                             <i class="fas fa-user p-2"></i><label > Nome do cliente: </label>
                             <input class="form-control mb-3" type="text" name="nome" required value="${cliente.nomeUsuario}" minlength="5" maxlength="45"/>
 
-                            <i class="fas fa-passport p-2"></i><label> CPF do cliente : </label>
-                            <input  class="form-control mb-3 cpf" type="text" name="cpf" required value="${cliente.cpf}" minlength="11" maxlength="11"/>
-
-                            <i class="fas fa-envelope p-2"></i> <label> Email do cliente : </label>
-                            <input  class="form-control mb-3 email" type="text" name="email" required value="${cliente.email}"/>
-
                             <i class="fas fa-envelope p-2"></i> <label> Senha : </label>
-                            <input  class="form-control mb-3 email" type="password" name="passwd" required  minlength="8" maxlength="8" value="${cliente.password}"/>
+                            <input  class="form-control mb-3 email" type="password" name="passwd"  minlength="8" maxlength="8" value="${cliente.password}"/>
 
                             <i class="fas fa-phone p-2"></i> <label> Telefone: </label>
                             <input  class="form-control mb-3 phone_with_ddd" type="text" name="telefone" required value="${cliente.telefone}" minlength="11" maxlength="11">
@@ -72,21 +66,12 @@
 
                             <i class="fas fa-flag p-2"></i> <label> UF : </label>
 
-                            <select id="estado" name="estado" class="form-control">
-                                <option selected="selected">Selecione um estado</option>
-                                <c:forEach var="estado" items="${estados}">
-                                    <option <c:out value="${(cliente.cidade.estado.idEstado == estado.idEstado) ? \"selected\" : \"\" }"/> value="<c:out value="${estado.idEstado}"/>"><c:out value="${estado.nomeEstado}"/></option>
-                                </c:forEach>
-                            </select></br>
-
-                            <i class="fas fa-city p-2"></i> <label> Cidade : </label>
-                            <select  class="form-control mb-3" type="text" id="cidade" name="cidade">
-                                <option selected value="<c:out value="${cliente.cidade.idCidade}"/>"><c:out value="${cliente.cidade.nomeCidade}"/></option
-                            </select></br>
+                            <i class="fas fa-map-signs p-2"></i> <label> Cidade : </label>
+                            <input  class="form-control mb-3" type="text" name="cidade" required value="${cliente.cidade}" minlength="5" maxlength="255">
                             <input type="text" name="id" value="${cliente.idUsuario}" hidden>
 
                             <div class="d-flex justify-content-center mt-5">
-                                <a href="../ClienteServlet" class="btn btn-danger w-25 mr-3" type="submit">Cancelar</a>
+                                <a href="/Trabalho-web" class="btn btn-danger w-25 mr-3" type="submit">Cancelar</a>
                                 <c:if test="${cliente.idUsuario==null}">
                                     <c:set var="valueButton" value="Save" />
 
