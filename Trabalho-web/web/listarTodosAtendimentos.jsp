@@ -51,7 +51,7 @@
                                     <th>Produto</th>
                                     <th>Nome do cliente</th>
                                     <th>Descrição</th>
-                                     <c:if test="${loginBean.tipoUsuario == 'Funcionario'}">
+                                     <c:if test="${loginBean.tipoUsuario == 'f'}">
                                        <th>Detalhes Atendimento</th>
                                      </c:if>
                                 </tr>
@@ -64,7 +64,7 @@
                                         <td><c:out value="${atendimento.usuario.nomeUsuario}"/></td>
                                         <td><c:out value="${atendimento.descricaoAtendimento}"/></td>
                                         <td>
-                                            <c:if test="${loginBean.tipoUsuario == 'Funcionario'}">
+                                            <c:if test="${loginBean.tipoUsuario == 'f'}">
                                                 <a class="mr-3" href="AtendimentoServlet?action=showFunc&id=${atendimento.idAtendimento}"><button><i class="fas fa-comment-dots fa-2x"></i></button></a>
                                             </c:if>
                                         </td>

@@ -21,8 +21,6 @@ import com.ufpr.tads.web2.beans.EstadoBean;
 import com.ufpr.tads.web2.beans.UsuarioBean;
 import com.ufpr.tads.web2.facade.UsuarioFacade;
 import com.ufpr.tads.web2.facade.EstadoFacade;
-import com.ufpr.tads.web2.facade.CidadeFacade;
-
 
 @WebServlet(name = "FuncionarioServlet", urlPatterns = {"/FuncionarioServlet"})
 public class FuncionarioServlet extends HttpServlet {
@@ -40,18 +38,18 @@ public class FuncionarioServlet extends HttpServlet {
             List<UsuarioBean> listaUsuarios;
             String action = request.getParameter("action");
             if (action == null) {
-                listaUsuarios = new ArrayList<UsuarioBean>();
+                listaUsuarios = new ArrayList<>();
                 listaUsuarios = UsuarioFacade.buscarTodosFuncionarios();
                 request.setAttribute("listaFuncionarios", listaUsuarios);
                 rd = getServletContext().getRequestDispatcher("/funcionarioListar.jsp");
                 rd.forward(request, response);
 
             } else {
-                List<UsuarioBean> listaUsers = new ArrayList<UsuarioBean>();
+                List<UsuarioBean> listaUsers = new ArrayList<>();
                 UsuarioBean user;
                 switch (action) {
                     case "list":
-                        listaUsuarios = new ArrayList<UsuarioBean>();
+                        listaUsuarios = new ArrayList<>();
                         listaUsuarios = UsuarioFacade.buscarTodosFuncionarios();
                         request.setAttribute("listaFuncionarios", listaUsuarios);
                         rd = getServletContext().getRequestDispatcher("/funcionarioListar.jsp");
@@ -116,13 +114,9 @@ public class FuncionarioServlet extends HttpServlet {
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
                         user.setTipoUsuario(request.getParameter("cargo"));
-                        cidade = new CidadeBean();
+                        user.setCidade(request.getParameter("cidade"));
 
-                        idCidade = Integer.parseInt(request.getParameter("cidade"));
-                        cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                        user.setCidade(cidade);
-
-                        if (!user.getNomeUsuario().equals(null) && !user.getCpf().equals(null) && !user.getEmail().equals(null)) {
+                        if (!user.getNomeUsuario().isEmpty() && !user.getCpf().isEmpty() && !user.getEmail().isEmpty()) {
 
                             if (UsuarioFacade.alterar(user, user.getTipoUsuario()) == 0) {
                                String str  = "Conta atualizada com sucesso para o funiConário " + user.getNomeUsuario();
@@ -134,7 +128,6 @@ public class FuncionarioServlet extends HttpServlet {
                                 request.setAttribute("msg", "Erro ao atualizar usuário. ");
                                 rd = getServletContext().getRequestDispatcher("/erro.jsp");
                                 rd.forward(request, response);
-
                             }
                         }
                         break;
@@ -162,13 +155,9 @@ public class FuncionarioServlet extends HttpServlet {
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
                         user.setTipoUsuario(request.getParameter("cargo"));
-                        cidade = new CidadeBean();
+                        user.setCidade(request.getParameter("cidade"));
 
-                        idCidade = Integer.parseInt(request.getParameter("cidade"));
-                        cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                        user.setCidade(cidade);
-
-                        if (!user.getNomeUsuario().equals(null) && !user.getCpf().equals(null) && !user.getEmail().equals(null)) {
+                        if (!user.getNomeUsuario().isEmpty() && !user.getCpf().isEmpty() && !user.getEmail().isEmpty()) {
                             UsuarioFacade.inserir(user, user.getTipoUsuario());
                             String str = "Conta criada com sucesso para o funcionário(a) " + user.getNomeUsuario();
                             request.setAttribute("msg", str);

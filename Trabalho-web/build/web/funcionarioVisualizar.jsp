@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html>
-    <head><jsp:include page="/head.jsp"/></head>
+    <head><jsp:include page="/head.jsp"/></head> 
     <body>
     
         <jsp:include page="/nav.jsp"/>
@@ -64,12 +64,8 @@
                 </tr>
                 <tr>
                     <td><c:out value="Cidade :"/></td> 
-                    <td><c:out value="${funcionario.cidade.nomeCidade}"/></td> 
+                    <td><c:out value="${funcionario.cidade}"/></td> 
                 </tr>
-                 <tr>
-                    <td><c:out value="UF :"/></td> 
-                    <td><c:out value="${funcionario.cidade.estado.sigla}"/></td> 
-                </tr> 
             </table>
         </div>
                     

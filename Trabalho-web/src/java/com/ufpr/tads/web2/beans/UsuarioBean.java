@@ -14,7 +14,7 @@ public class UsuarioBean implements Serializable {
     private String complemento;
     private String bairro;
     private String cep;
-    private CidadeBean cidade;
+    private String cidade;
     private String tipoUsuario;
 
     public UsuarioBean() {
@@ -108,11 +108,11 @@ public class UsuarioBean implements Serializable {
         this.cep = cep;
     }
 
-    public CidadeBean getCidade() {
+    public String getCidade() {
         return cidade;
     }
 
-    public void setCidade(CidadeBean cidade) {
+    public void setCidade(String cidade) {
         this.cidade = cidade;
     }
 

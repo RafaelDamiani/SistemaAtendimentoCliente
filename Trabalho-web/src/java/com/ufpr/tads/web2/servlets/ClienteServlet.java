@@ -61,7 +61,7 @@ public class ClienteServlet extends HttpServlet {
                     case "show":
                         strId = request.getParameter("id");
                         id = Integer.parseInt(strId);
-                        user = UsuarioFacade.buscarPorId(id, "Cliente");
+                        user = UsuarioFacade.buscarPorId(id, "c");
                         if (user != null) {
                             request.setAttribute("user", user);
                             rd = getServletContext().getRequestDispatcher("/clienteVisualizar.jsp");
@@ -72,7 +72,7 @@ public class ClienteServlet extends HttpServlet {
                     case "formUpdate":
                         strId = request.getParameter("id");
                         id = Integer.parseInt(strId);
-                        user = UsuarioFacade.buscarPorId(id, "Cliente");
+                        user = UsuarioFacade.buscarPorId(id, "c");
                         if (user != null) {
                             request.setAttribute("cliente", user);
                             estados = EstadoFacade.buscarTodos();
@@ -102,27 +102,24 @@ public class ClienteServlet extends HttpServlet {
                         user = new UsuarioBean();
                         user.setIdUsuario(id);
                         user.setNomeUsuario(request.getParameter("nome"));
-                        user.setCpf(request.getParameter("cpf"));
                         user.setEmail(request.getParameter("email"));
                         user.setTelefone(request.getParameter("telefone"));
                         pass = request.getParameter("passwd");
-                        senha = UsuarioFacade.criptografarSenha(pass);
-                        user.setPassword(senha);
+                        if (!pass.isEmpty()) {
+                            senha = UsuarioFacade.criptografarSenha(pass);
+                            user.setPassword(senha);
+                        }
                         user.setNomeRua(request.getParameter("endereco"));
                         numeroRua = Integer.parseInt(request.getParameter("nrua"));
                         user.setNumeroRua(numeroRua);
                         user.setComplemento(request.getParameter("complemento"));
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
-                        cidade = new CidadeBean();
+                        user.setCidade(request.getParameter("cidade"));
+                        
+                        if (!user.getNomeUsuario().isEmpty()) {
 
-                        idCidade = Integer.parseInt(request.getParameter("cidade"));
-                        cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                        user.setCidade(cidade);
-
-                        if (!user.getNomeUsuario().equals(null) && !user.getCpf().equals(null) && !user.getEmail().equals(null)) {
-
-                            if (UsuarioFacade.alterar(user, "Cliente") == 0) {
+                            if (UsuarioFacade.alterar(user, "c") == 0) {
                                 System.out.println(user.getNomeUsuario());
                                 System.out.println(user.getEmail());
                                 request.setAttribute("msg", user.getNomeUsuario() + ", sua conta foi atualizada com sucesso");
@@ -160,11 +157,7 @@ public class ClienteServlet extends HttpServlet {
                         user.setComplemento(request.getParameter("complemento"));
                         user.setBairro(request.getParameter("bairro"));
                         user.setCep(request.getParameter("cep"));
-                        cidade = new CidadeBean();
-
-                        idCidade = Integer.parseInt(request.getParameter("cidade"));
-                        cidade = CidadeFacade.buscarCidadeCliente(idCidade);
-                        user.setCidade(cidade);
+                        user.setCidade(request.getParameter("cidade"));
 
                         if (!user.getNomeUsuario().equals(null) && !user.getCpf().equals(null) && !user.getEmail().equals(null)) {
                             UsuarioFacade.inserir(user, "Cliente");

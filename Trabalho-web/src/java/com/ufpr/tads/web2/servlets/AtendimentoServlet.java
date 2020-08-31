@@ -52,7 +52,7 @@ public class AtendimentoServlet extends HttpServlet {
                         request.setAttribute("listaTiposAtendimentos", listaTiposAtendimentos);
                         request.setAttribute("listaProdutos", listaProdutos);                        
                         request.setAttribute("user", user);
-                        rd = getServletContext().getRequestDispatcher("/atendimento/atendimento.jsp");
+                        rd = getServletContext().getRequestDispatcher("/atendimento.jsp");
                         rd.forward(request, response);
                     break;
                     case "new":
@@ -76,11 +76,12 @@ public class AtendimentoServlet extends HttpServlet {
 
                         if (atendimento != null) {
                             AtendimentoFacade.inserirAtendimento(atendimento);
-                            String strMessage = "Atendimento com id " + " inserido com sucesso!";
-                            request.setAttribute("msg", strMessage);
-                            //rd = getServletContext().getRequestDispatcher("AtendimentoServlet?action=list");
-                            //rd.forward(request, response);
-                            response.sendRedirect("/Trabalho-Web/AtendimentoServlet?action=list");
+                            listaAtendimentos = AtendimentoFacade.buscarTodosAtendimentosUser(loginBean.getId());
+                            if (listaAtendimentos != null) {
+                                request.setAttribute("meusAtendimentos", listaAtendimentos);
+                                rd = getServletContext().getRequestDispatcher("/meusAtendimentos.jsp");
+                                rd.forward(request, response);
+                            }
                         }
                         break;
                     case "list":
@@ -132,7 +133,12 @@ public class AtendimentoServlet extends HttpServlet {
                         id = Integer.parseInt(strId);
                         String s = request.getParameter("solucao");
                         AtendimentoFacade.responderAtendimento(id, s);
-                        response.sendRedirect("/Trabalho-Web/AtendimentoServlet?action=listarAbertos");
+                        listaAtendimentos = AtendimentoFacade.buscarTodosAtendimentosAbertos();
+                        if (listaAtendimentos != null) {
+                            request.setAttribute("atendimentosEmAberto", listaAtendimentos);
+                            rd = getServletContext().getRequestDispatcher("/funcionarioAtendimento.jsp");
+                            rd.forward(request, response);
+                        }
                     break;
                     case "listarTodosAtendimentos":
                        listaAtendimentos = AtendimentoFacade.buscarTodosAtendimentos();
