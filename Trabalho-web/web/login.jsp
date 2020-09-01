@@ -34,7 +34,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Login</title>
     </head>
-    <body style="background-color:#F6CEF5">
+    <body style="background-color:#fff">
         <%@ page errorPage="erro.jsp" %>
         <jsp:include page="/nav.jsp"/>
         <link rel="stylesheet" type="text/css" href="css/login.css">
