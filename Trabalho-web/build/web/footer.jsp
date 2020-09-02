@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 <div class="container-fluid " >
-    <footer class="site-footer" style="background-color: #F6CEF5"> 
+    <footer class="site-footer" style="background-color: #fff"> 
         <div class="d-flex justify-content-center">
             <p class="mt-4 text-black">
                 Todos os direitos reservados a Cabeleleila Leila ©

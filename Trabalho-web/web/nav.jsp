@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<nav class="navbar navbar-light" style="background-color: #806afc">
+<nav class="navbar navbar-light" style="background-color: #343a40">
     <a class="navbar-brand" style="color:#FFFFFF" href="index.jsp">Cabeleleila Leila</a>
         <c:choose>
             <c:when test="${loginBean.tipoUsuario == 'c'}">

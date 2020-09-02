@@ -35,7 +35,7 @@
                 <div class="row align-items-center site-hero-inner justify-content-center">
                     <div class="col-md-8 text-center">
                         <div class="mb-5 element-animate">
-                            <h1>Lista de Funcionários Beibe</h1>
+                            <h1>Lista de Funcionários</h1>
                         </div>
                     </div>
                 </div>
